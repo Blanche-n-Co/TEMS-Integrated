@@ -19,6 +19,8 @@
 
 
 
+
+
 /*********************************************************************
  * Category:        Instructions pragma
  ********************************************************************/
@@ -35,6 +37,8 @@
 
 
 
+
+
 /*********************************************************************
  * Category:        Prérequis fonctionnement Ethernet
  ********************************************************************/
@@ -45,11 +49,13 @@ APP_CONFIG AppConfig;	//structure déclarée dans StackTsk.h (utiliser ds la fonct
 unsigned char depart2=0;
 BYTE DonneRecue[MaxLenghtRX];
 WORD nbrRecu=0;
-static TCP_SOCKET receiveSocket=INVALID_SOCKET;
-//static TCP_SOCKET transmitSocket=INVALID_SOCKET;
+static TCP_SOCKET receiveSocket = INVALID_SOCKET;
 WORD ok=0;
 BOOL connect=0;
 unsigned char i=0;
+
+
+
 
 
 /*********************************************************************
@@ -59,6 +65,9 @@ void MyInterruptLow(void);
 void MyInterruptHight(void);
 
 static void InitAppConfig(void);
+
+
+
 
 
 /*********************************************************************
@@ -89,14 +98,6 @@ void main(void){
 
     //USART1
     IPR1bits.RC1IP  = 1;
-
-    //INT2
-    ANSELBbits.ANSB2    = 0;
-    TRISBbits.TRISB2    = 1;		//INT2 en entrée
-    
-    INTCON3bits.INT2IE  = 1;
-    INTCON3bits.INT2IF  = 0;
-    INTCON2bits.INTEDG2 = 0;
 
 
     /*************************************
@@ -139,54 +140,44 @@ void main(void){
 	StackApplications();
 
         connect = TCPIsConnected(receiveSocket);
-        if(connect == TRUE)
-        {
-            if(depart2 == 0)
-            {
-                //putrsXLCD("RXcon");
-                depart2 = 1;
-            }
-            else
-            {
-                nbrRecu=TCPIsGetReady(receiveSocket);
+        if(connect == TRUE){
+            nbrRecu=TCPIsGetReady(receiveSocket);
 
-                if(nbrRecu>0)
+            if(nbrRecu>0)
+            {
+                for(i=0;i<=MaxLenghtRX;i++)
+                        DonneRecue[i]=0;
+
+                ok = TCPGetArray(receiveSocket,&DonneRecue[0],nbrRecu);
+
+                //putsXLCD(DonneRecue);
+
+                if(DonneRecue[0]==35)	//35=#
                 {
-                    for(i=0;i<=MaxLenghtRX;i++)
-                            DonneRecue[i]=0;
 
-                    ok = TCPGetArray(receiveSocket,&DonneRecue[0],nbrRecu);
+                    if(strcmppgm2ram(DonneRecue,"#LedA")==0)
+                            //Led =1;
+                    if(strcmppgm2ram(DonneRecue,"#LedE")==0)
+                            //Led =0;
 
-                    //putsXLCD(DonneRecue);
-
-                    if(DonneRecue[0]==35)	//35=#
+                    if(strcmppgm2ram(DonneRecue,"#RelayA")==0)
+                            //Relai =1;
+                    if(strcmppgm2ram(DonneRecue,"#RelayE")==0)
+                            //Relai =0;
+                    if(strcmppgm2ram(DonneRecue,"#2LCD")==0)
                     {
 
-                        if(strcmppgm2ram(DonneRecue,"#LedA")==0)
-                                //Led =1;
-                        if(strcmppgm2ram(DonneRecue,"#LedE")==0)
-                                //Led =0;
-
-                        if(strcmppgm2ram(DonneRecue,"#RelayA")==0)
-                                //Relai =1;
-                        if(strcmppgm2ram(DonneRecue,"#RelayE")==0)
-                                //Relai =0;
-                        if(strcmppgm2ram(DonneRecue,"#2LCD")==0)
-                        {
-                            
-                        }
-                        //envoi au pc ce qui a ete recu une fois que c'est fini
-                        ok=TCPIsPutReady(receiveSocket);
-                        if(ok>0)
-                        {
-                                ok=TCPPutArray(receiveSocket,&DonneRecue[0],11);
-                                TCPFlush(receiveSocket);
-                        }
                     }
- //                   TCPDisconnect(receiveSocket);
-                    StackTask();
-                    StackApplications();
+                    //envoi au pc ce qui a ete recu une fois que c'est fini
+                    ok=TCPIsPutReady(receiveSocket);
+                    if(ok > 0){
+                            ok=TCPPutArray(receiveSocket,&DonneRecue[0],11);
+                            TCPFlush(receiveSocket);
+                    }
                 }
+
+                StackTask();
+                StackApplications();
             }
         }
     } 

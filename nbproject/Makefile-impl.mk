@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=TEMS-Integrated.X
+PROJECTNAME=TEMS-Integrated
 
 # Active Configuration
 DEFAULTCONF=default

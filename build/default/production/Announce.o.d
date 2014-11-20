@@ -1,5 +1,5 @@
 build/default/production/Announce.o:  \
-	C:/Users/Manager/MPLABXProjects/TEMS-Integrated.X/Announce.c  \
-	C:/Users/Manager/MPLABXProjects/TEMS-Integrated.X/TCPIPConfig.h  \
-	C:/Users/Manager/MPLABXProjects/TEMS-Integrated.X/Compiler.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/Announce.c  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIPConfig.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/Compiler.h  \
 
