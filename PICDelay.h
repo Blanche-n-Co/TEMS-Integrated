@@ -1,0 +1,1 @@
+void DelayMS(int MilliSeconds);
