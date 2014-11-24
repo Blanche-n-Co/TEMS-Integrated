@@ -1,12 +1,12 @@
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 160 : suspicious pointer conversion
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 160 : type qualifier mismatch in assignment
 Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 162 : suspicious pointer conversion
 Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 162 : type qualifier mismatch in assignment
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 164 : suspicious pointer conversion
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 164 : type qualifier mismatch in assignment
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 165 : suspicious pointer conversion
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 165 : type qualifier mismatch in assignment
 Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 167 : suspicious pointer conversion
 Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 167 : type qualifier mismatch in assignment
 Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 169 : suspicious pointer conversion
 Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 169 : type qualifier mismatch in assignment
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 171 : suspicious pointer conversion
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 171 : type qualifier mismatch in assignment
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 265 : type qualifier mismatch in assignment
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 320 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 263 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 318 : type qualifier mismatch in assignment
