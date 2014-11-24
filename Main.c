@@ -40,6 +40,15 @@
 
 
 /*********************************************************************
+ * Category:        Variables globales
+ ********************************************************************/
+
+
+
+
+
+
+/*********************************************************************
  * Category:        Prérequis fonctionnement Ethernet
  ********************************************************************/
 #define MaxLenghtRX	30
@@ -49,8 +58,8 @@ APP_CONFIG AppConfig;	//structure déclarée dans StackTsk.h (utiliser ds la fonct
 unsigned char depart2=0;
 BYTE DonneRecue[MaxLenghtRX];
 WORD nbrRecu=0;
-static TCP_SOCKET receiveSocket = INVALID_SOCKET;
-WORD ok=0;
+static TCP_SOCKET socket = INVALID_SOCKET;
+WORD ok = 0;
 BOOL connect=0;
 unsigned char i=0;
 
@@ -65,6 +74,7 @@ void MyInterruptLow(void);
 void MyInterruptHight(void);
 
 static void InitAppConfig(void);
+void Manage_Button(volatile unsigned char *ptr_Button);     //Gestion des touches
 
 
 
@@ -117,15 +127,10 @@ void main(void){
     //crée un socket serveur pour ecouter les sockets qui sont destinés à cette carte
     //serveur=recoit
     //port d'écoute est 30302
-    receiveSocket=TCPOpen(0,
+    socket = TCPOpen(0,
                         TCP_OPEN_SERVER,
                         Port,
                         TCP_PURPOSE_DEFAULT);
-    
-    if(receiveSocket==INVALID_SOCKET)
-            /*putrsXLCD("TCPFailRX:        ")*/;
-    else
-            //putrsXLCD("TCPOpenRX:        ");
 
     Delay10KTCYx(200);  //0.5sec
     Delay10KTCYx(200);  //0.5sec
@@ -134,45 +139,45 @@ void main(void){
     /*************************************
     *-> Boucle principale
     **************************************/
-    while(1)
-    {
+    while(1){
 	StackTask();
 	StackApplications();
 
-        connect = TCPIsConnected(receiveSocket);
+        connect = TCPIsConnected(socket);
         if(connect == TRUE){
-            nbrRecu=TCPIsGetReady(receiveSocket);
+            nbrRecu = TCPIsGetReady(socket);
 
-            if(nbrRecu>0)
+            if(nbrRecu > 0)
             {
-                for(i=0;i<=MaxLenghtRX;i++)
+                for(i=0 ; i<=MaxLenghtRX ; i++)
                         DonneRecue[i]=0;
 
-                ok = TCPGetArray(receiveSocket,&DonneRecue[0],nbrRecu);
+                ok = TCPGetArray(socket,&DonneRecue[0],nbrRecu);
 
                 //putsXLCD(DonneRecue);
 
-                if(DonneRecue[0]==35)	//35=#
+                if(DonneRecue[0] == 35)             //35=#
                 {
 
-                    if(strcmppgm2ram(DonneRecue,"#LedA")==0)
+                    if(strcmppgm2ram(DonneRecue,"#LedA") == 0)
                             //Led =1;
-                    if(strcmppgm2ram(DonneRecue,"#LedE")==0)
+                    if(strcmppgm2ram(DonneRecue,"#LedE") == 0)
                             //Led =0;
 
-                    if(strcmppgm2ram(DonneRecue,"#RelayA")==0)
+                    if(strcmppgm2ram(DonneRecue,"#RelayA") == 0)
                             //Relai =1;
-                    if(strcmppgm2ram(DonneRecue,"#RelayE")==0)
+                    if(strcmppgm2ram(DonneRecue,"#RelayE") == 0)
                             //Relai =0;
-                    if(strcmppgm2ram(DonneRecue,"#2LCD")==0)
+                    if(strcmppgm2ram(DonneRecue,"#2LCD") == 0)
                     {
-
+                        
                     }
+
                     //envoi au pc ce qui a ete recu une fois que c'est fini
-                    ok=TCPIsPutReady(receiveSocket);
+                    ok = TCPIsPutReady(socket);
                     if(ok > 0){
-                            ok=TCPPutArray(receiveSocket,&DonneRecue[0],11);
-                            TCPFlush(receiveSocket);
+                            ok = TCPPutArray(socket,&DonneRecue[0],11);
+                            TCPFlush(socket);
                     }
                 }
 
@@ -207,40 +212,33 @@ void DelayXLCD(void){
 
 
 /*********************************************************************
- * Category:        Prérequis fonctionnement interruptions
+ * Function:        Button Mangement
  ********************************************************************/
-#pragma code lowVector=0x0018
-void atInterruptLow(void){
-  _asm GOTO MyInterruptLow _endasm}
-#pragma code
-
-#pragma code hightVector=0x0008
-void atInterruptHight(void){
-  _asm GOTO MyInterruptHight _endasm}
-#pragma code
-
-
-
-
-
-/*********************************************************************
- * Category:        Fonctions d'interruptions
- ********************************************************************/
-#pragma interrupt MyInterruptLow
-void MyInterruptLow(void)
-{
-    if(INTCONbits.TMR0IF){
-        TickUpdate();                       //Reset Timer0 et flag
+void Manage_Button(volatile unsigned char *ptr_Button){
+switch (*ptr_Button){
+        case UP :
+        {
+            break;
+        }
+        case DOWN :
+        {
+            break;
+        }
+        case CENTER :
+        {
+             break;
+        }
+        case RIGHT :
+        {
+             break;
+        }
+        case LEFT :
+        {
+            break;
+        }
     }
 }
 
-
-#pragma interrupt MyInterruptHight
-void MyInterruptHight(void)
-{
-    
-    
-}
 
 
 

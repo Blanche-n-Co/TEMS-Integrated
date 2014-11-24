@@ -37,6 +37,8 @@
         <itemPath>fcts/LCD/xlcd.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="OS" projectFiles="true">
+        <itemPath>fcts/OS/My_TIMERS.h</itemPath>
+        <itemPath>fcts/OS/TIOS.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -77,6 +79,8 @@
         </logicalFolder>
         <logicalFolder name="f3" displayName="OS" projectFiles="true">
           <itemPath>fcts/OS/hardware.c</itemPath>
+          <itemPath>fcts/OS/My_TIMERS.c</itemPath>
+          <itemPath>fcts/OS/TIOS.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>Main.c</itemPath>
