@@ -1,6 +1,5 @@
 #include <p18cxxx.h>
-
-#include "delays.h"
+#include <delays.h>
 #include "xlcd.h"
 
 /********************************************************************
@@ -17,7 +16,6 @@
 *                       DelayPORXLCD() provides at least 15ms delay *
 *                       DelayXLCD() provides at least 5ms delay     *
 ********************************************************************/
-
 void OpenXLCD(unsigned char lcdtype)
 {
         // The data bits must be either a 8-bit port or the upper or
@@ -61,8 +59,10 @@ void OpenXLCD(unsigned char lcdtype)
         WriteCmdXLCD(lcdtype);          // Function set cmd
 
         // Turn the display on then off
-        while(BusyXLCD());                             // Wait if LCD busy
-        WriteCmdXLCD(DON&CURSOR_OFF&BLINK_OFF);        // Display ON/Blink OFF
+        while(BusyXLCD());              // Wait if LCD busy
+        WriteCmdXLCD(DOFF&CURSOR_OFF&BLINK_OFF);        // Display OFF/Blink OFF
+        while(BusyXLCD());              // Wait if LCD busy
+        WriteCmdXLCD(DON&CURSOR_ON&BLINK_ON);           // Display ON/Blink ON
 
         // Clear display
         while(BusyXLCD());              // Wait if LCD busy
@@ -70,12 +70,12 @@ void OpenXLCD(unsigned char lcdtype)
 
         // Set entry mode inc, no shift
         while(BusyXLCD());              // Wait if LCD busy
-        WriteCmdXLCD(SHIFT_DISP_LEFT);   // Entry Mode
+        WriteCmdXLCD(SHIFT_CUR_LEFT);   // Entry Mode
 
         // Set DD Ram address to 0
         while(BusyXLCD());              // Wait if LCD busy
-        SetDDRamAddr(0x00);             // Set Display data ram address to 0
-
+        //SetDDRamAddr(0x80);                // Set Display data ram address to 0
+		
         return;
 }
 

@@ -1,7 +1,8 @@
 #ifndef __XLCD_H
 #define __XLCD_H
+#include "p18cxxx.h"
 
-#include <p18cxxx.h>
+
 
 /* PIC18 XLCD peripheral routines.
  *
@@ -30,44 +31,47 @@
 /* When in 4-bit interface define if the data is in the upper
  * or lower nibble.  For lower nibble, comment the #define UPPER
  */
+
 /* #define UPPER */
 
+
 /* DATA_PORT defines the port to which the LCD data lines are connected */
- #define DATA_PORT      		PORTA
- #define TRIS_DATA_PORT 		TRISA
+
+    #define DATA_PORT      		PORTA
+    #define TRIS_DATA_PORT 		TRISA
 
 /* CTRL_PORT defines the port where the control lines are connected.
  * These are just samples, change to match your application.
  */
- #define RW_PIN   LATEbits.LATE0   		/* PORT for RW */
- #define TRIS_RW  TRISEbits.TRISE0              /* TRIS for RW */
+#define RW_PIN      LATEbits.LATE0              /* PORT for RW */
+#define TRIS_RW     TRISEbits.TRISE0    	/* TRIS for RW */
 
- #define RS_PIN   LATDbits.LATD5   		/* PORT for RS */
- #define TRIS_RS  TRISDbits.TRISD5              /* TRIS for RS */
+#define RS_PIN      LATDbits.LATD5              /* PORT for RS */
+#define TRIS_RS     TRISDbits.TRISD5    	/* TRIS for RS */
 
- #define E_PIN    LATAbits.LATA4  		/* PORT for D  */
- #define TRIS_E   TRISAbits.TRISA4              /* TRIS for E  */
+#define E_PIN       LATAbits.LATA4              /* PORT for E  */
+#define TRIS_E      TRISAbits.TRISA4    	/* TRIS for E  */
 
 /* Display ON/OFF Control defines */
-#define DON         0b00001111  /* Display on      */
-#define DOFF        0b00001011  /* Display off     */
-#define CURSOR_ON   0b00001111  /* Cursor on       */
-#define CURSOR_OFF  0b00001101  /* Cursor off      */
-#define BLINK_ON    0b00001111  /* Cursor Blink    */
-#define BLINK_OFF   0b00001110  /* Cursor No Blink */
+#define DON         0b00001111                  /* Display on      */
+#define DOFF        0b00001011                  /* Display off     */
+#define CURSOR_ON   0b00001111                  /* Cursor on       */
+#define CURSOR_OFF  0b00001101                  /* Cursor off      */
+#define BLINK_ON    0b00001111                  /* Cursor Blink    */
+#define BLINK_OFF   0b00001110                  /* Cursor No Blink */
 
 /* Cursor or Display Shift defines */
-#define SHIFT_CUR_LEFT    0b00000100  /* Cursor shifts to the left   */
-#define SHIFT_CUR_RIGHT   0b00000101  /* Cursor shifts to the right  */
-#define SHIFT_DISP_LEFT   0b00000110  /* Display shifts to the left  */
-#define SHIFT_DISP_RIGHT  0b00000111  /* Display shifts to the right */
+#define SHIFT_CUR_LEFT    0b00000100            /* Cursor shifts to the left   */
+#define SHIFT_CUR_RIGHT   0b00000101            /* Cursor shifts to the right  */
+#define SHIFT_DISP_LEFT   0b00000110            /* Display shifts to the left  */
+#define SHIFT_DISP_RIGHT  0b00000111            /* Display shifts to the right */
 
 /* Function Set defines */
-#define FOUR_BIT   0b00101100  /* 4-bit Interface               */
-#define EIGHT_BIT  0b00111100  /* 8-bit Interface               */
-#define LINE_5X7   0b00110000  /* 5x7 characters, single line   */
-#define LINE_5X10  0b00110100  /* 5x10 characters               */
-#define LINES_5X7  0b00111000  /* 5x7 characters, multiple line */
+#define FOUR_BIT   0b00101100                   /* 4-bit Interface               */
+#define EIGHT_BIT  0b00111100                   /* 8-bit Interface               */
+#define LINE_5X7   0b00110000                   /* 5x7 characters, single line   */
+#define LINE_5X10  0b00110100                   /* 5x10 characters               */
+#define LINES_5X7  0b00111000                   /* 5x7 characters, multiple line */
 
 #define PARAM_SCLASS auto
 #define MEM_MODEL far  /* Change this to near for small memory model */

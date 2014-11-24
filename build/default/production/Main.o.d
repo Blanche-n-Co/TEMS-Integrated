@@ -2,6 +2,7 @@ build/default/production/Main.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/Main.c  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/LCD/xlcd.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/Temperature/ftoa.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/LCD/writeOnLCD.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/Helpers.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/Tick.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/MAC.h  \
@@ -11,6 +12,7 @@ build/default/production/Main.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/ICMP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/main.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/OS/hardware.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/LCD/delaysXLCD.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/pconfig.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIPConfig.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/Compiler.h  \

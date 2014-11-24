@@ -7,7 +7,7 @@
 void InitHardware(void)
 {
     /*************************************
-    *-> Horloge et registres
+    *-> Registres
     **************************************/
     OSCCONbits.IRCF=0b111; // 16MhZ !!
 

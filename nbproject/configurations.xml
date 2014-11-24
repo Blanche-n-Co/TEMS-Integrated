@@ -34,11 +34,16 @@
         <itemPath>fcts/OS/hardware.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="LCD" projectFiles="true">
+        <itemPath>fcts/LCD/delaysXLCD.h</itemPath>
+        <itemPath>fcts/LCD/writeOnLCD.h</itemPath>
         <itemPath>fcts/LCD/xlcd.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="OS" projectFiles="true">
         <itemPath>fcts/OS/My_TIMERS.h</itemPath>
         <itemPath>fcts/OS/TIOS.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="Values" projectFiles="true">
+        <itemPath>fcts/Values/ftoa.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -67,6 +72,7 @@
         </logicalFolder>
         <logicalFolder name="f2" displayName="LCD" projectFiles="true">
           <itemPath>fcts/LCD/busyxlcd.c</itemPath>
+          <itemPath>fcts/LCD/delaysXLCD.c</itemPath>
           <itemPath>fcts/LCD/openxlcd.c</itemPath>
           <itemPath>fcts/LCD/putrxlcd.c</itemPath>
           <itemPath>fcts/LCD/putsxlcd.c</itemPath>
@@ -76,11 +82,15 @@
           <itemPath>fcts/LCD/setddram.c</itemPath>
           <itemPath>fcts/LCD/wcmdxlcd.c</itemPath>
           <itemPath>fcts/LCD/writdata.c</itemPath>
+          <itemPath>fcts/LCD/writeOnLCD.c</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="OS" projectFiles="true">
           <itemPath>fcts/OS/hardware.c</itemPath>
           <itemPath>fcts/OS/My_TIMERS.c</itemPath>
           <itemPath>fcts/OS/TIOS.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f4" displayName="Values" projectFiles="true">
+          <itemPath>fcts/Values/ftoa.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>Main.c</itemPath>
@@ -95,6 +105,7 @@
     <Elem>TCPIP Stack</Elem>
     <Elem>fcts/LCD</Elem>
     <Elem>fcts/OS</Elem>
+    <Elem>fcts/Values</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
