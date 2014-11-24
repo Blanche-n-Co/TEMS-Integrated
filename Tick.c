@@ -94,15 +94,15 @@ static void GetTickCopy(void);
 void TickInit(void)
 {
 #if defined(__18CXX)
-	// Use Timer0 for 8 bit processors
+    // Use Timer0 for 8 bit processors
     // Initialize the time
     TMR0H = 0;
     TMR0L = 0;
 
-	// Set up the timer interrupt
-	INTCON2bits.TMR0IP = 0;		// Low priority
-    INTCONbits.TMR0IF = 0;
-    INTCONbits.TMR0IE = 1;		// Enable interrupt
+    // Set up the timer interrupt
+    INTCON2bits.TMR0IP  = 0;		// Low priority
+    INTCONbits.TMR0IF   = 0;
+    INTCONbits.TMR0IE   = 1;		// Enable interrupt
 
     // Timer0 on, 16-bit, internal timer, 1:256 prescalar
     T0CON = 0x87;

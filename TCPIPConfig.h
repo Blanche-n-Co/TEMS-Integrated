@@ -74,7 +74,7 @@
 //#define STACK_USE_SSL_SERVER			// SSL server socket support (Requires SW300052)
 //#define STACK_USE_SSL_CLIENT			// SSL client socket support (Requires SW300052)
 //#define STACK_USE_AUTO_IP                     // Dynamic link-layer IP address automatic configuration protocol
-#define STACK_USE_DHCP_CLIENT			// Dynamic Host Configuration Protocol client for obtaining IP address and other parameters
+//#define STACK_USE_DHCP_CLIENT			// Dynamic Host Configuration Protocol client for obtaining IP address and other parameters
 //#define STACK_USE_DHCP_SERVER			// Single host DHCP server
 //#define STACK_USE_FTP_SERVER			// File Transfer Protocol (old)
 //#define STACK_USE_SMTP_CLIENT			// Simple Mail Transfer Protocol for sending email
@@ -161,20 +161,20 @@
 #define MY_DEFAULT_MAC_BYTE5            (0x00)	// internal factory programmed MAC
 #define MY_DEFAULT_MAC_BYTE6            (0x01)	// address instead.
 
-#define MY_DEFAULT_IP_ADDR_BYTE1        (192ul)	//adresse ip : 10.10.10.2
-#define MY_DEFAULT_IP_ADDR_BYTE2        (168ul)
-#define MY_DEFAULT_IP_ADDR_BYTE3        (10ul)
-#define MY_DEFAULT_IP_ADDR_BYTE4        (114ul)
+#define MY_DEFAULT_IP_ADDR_BYTE1        (10ul)	//adresse ip : 10.10.10.2
+#define MY_DEFAULT_IP_ADDR_BYTE2        (101ul)
+#define MY_DEFAULT_IP_ADDR_BYTE3        (23ul)
+#define MY_DEFAULT_IP_ADDR_BYTE4        (20ul)
 
 #define MY_DEFAULT_MASK_BYTE1           (255ul)	//masque 255.255.255.0
 #define MY_DEFAULT_MASK_BYTE2           (255ul)
 #define MY_DEFAULT_MASK_BYTE3           (255ul)
 #define MY_DEFAULT_MASK_BYTE4           (0ul)
 
-#define MY_DEFAULT_GATE_BYTE1           (192ul)
-#define MY_DEFAULT_GATE_BYTE2           (168ul)
-#define MY_DEFAULT_GATE_BYTE3           (10ul)
-#define MY_DEFAULT_GATE_BYTE4           (113ul)
+#define MY_DEFAULT_GATE_BYTE1           (10ul)
+#define MY_DEFAULT_GATE_BYTE2           (101ul)
+#define MY_DEFAULT_GATE_BYTE3           (23ul)
+#define MY_DEFAULT_GATE_BYTE4           (1ul)
 
 #define MY_DEFAULT_PRIMARY_DNS_BYTE1	(0ul)
 #define MY_DEFAULT_PRIMARY_DNS_BYTE2	(0ul)

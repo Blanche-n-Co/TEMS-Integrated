@@ -10,6 +10,9 @@
 #include "fcts/LCD/xlcd.h"
 #include "fcts/OS/hardware.h"
 #include "fcts/Temperature/ftoa.h"
+#include "fcts/LCD/xlcd.h"
+#include "fcts/LCD/delaysXLCD.h"
+#include "fcts/LCD/writeOnLCD.h"
 
 #include "pconfig.h"
 #include "TCPIPConfig.h"
@@ -84,9 +87,8 @@ void Manage_Button(volatile unsigned char *ptr_Button);     //Gestion des touche
  * Category:        Programme principal
  ********************************************************************/
 void main(void){
-    /*************************************
-    *-> Configuration de l'ADC
-    **************************************/
+    InitHardware();
+    
     ANSELDbits.ANSD4 = 1;
     TRISDbits.TRISD4 = 1;
 
@@ -105,8 +107,6 @@ void main(void){
     INTCONbits.PEIE = 1;		//active les interruptions des peripheriques
     RCONbits.IPEN   = 1;		//active les priorite des interruptions : indispensable pour les priorites basses
 
-    //USART1
-    IPR1bits.RC1IP  = 1;
 
 
     /*************************************
@@ -142,6 +142,7 @@ void main(void){
 	StackApplications();
 
         connect = TCPIsConnected(socket);
+        
         if(connect == TRUE){
             nbrRecu = TCPIsGetReady(socket);
 
@@ -185,25 +186,6 @@ void main(void){
         }
     } 
 }
-
-
-
-
-
-/*********************************************************************
- * Category:        Prérequis fonctionnement LCD
- ********************************************************************/
-void DelayFor18TCY(void){
-    Nop(); Nop(); Nop(); Nop(); Nop(); Nop();
-    Nop(); Nop(); Nop(); Nop(); Nop(); Nop();
-    Nop(); Nop(); Nop(); Nop(); Nop(); Nop();
-}
-
-void DelayPORXLCD(void){
-    Delay10KTCYx(6);}           // 15ms
-
-void DelayXLCD(void){
-    Delay10KTCYx(2);}           //  5ms
 
 
 
