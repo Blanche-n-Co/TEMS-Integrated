@@ -1,7 +1,3 @@
-//encore une fois je l'ai créé avec le programme "TCPIP configuration wizard"
-//puis je regarde si tout est bon
-//pour pouvoir faire un ping sur notre carte:decommenté #define STACK_USE_ICMP_SERVER et #define STACK_USE_ICMP_CLIENT dans TCPIPconfig.h
-
 /*********************************************************************
  *
  *	Microchip TCP/IP Stack Demo Application Configuration Header
@@ -65,11 +61,13 @@
  *   Uncomment or comment the following lines to enable or
  *   disabled the following high-level application modules.
  */
-//#define STACK_USE_UART			// Application demo using UART for IP address display and stack configuration
-//#define STACK_USE_UART2TCP_BRIDGE		// UART to TCP Bridge application example
-//#define STACK_USE_IP_GLEANING
+#define STACK_USE_IP_GLEANING
+#define STACK_USE_ANNOUNCE			// Microchip Embedded Ethernet Device Discoverer server/client
 #define STACK_USE_ICMP_SERVER			// Ping query and response capability
 #define STACK_USE_ICMP_CLIENT			// Ping transmission capability
+
+//#define STACK_USE_UART			// Application demo using UART for IP address display and stack configuration
+//#define STACK_USE_UART2TCP_BRIDGE		// UART to TCP Bridge application example
 //#define STACK_USE_HTTP2_SERVER		// New HTTP server with POST, Cookies, Authentication, etc.
 //#define STACK_USE_SSL_SERVER			// SSL server socket support (Requires SW300052)
 //#define STACK_USE_SSL_CLIENT			// SSL client socket support (Requires SW300052)
@@ -84,7 +82,6 @@
 //#define STACK_USE_GENERIC_TCP_CLIENT_EXAMPLE	// HTTP Client example in GenericTCPClient.c
 //#define STACK_USE_GENERIC_TCP_SERVER_EXAMPLE	// ToUpper server example in GenericTCPServer.c
 //#define STACK_USE_TELNET_SERVER		// Telnet server
-//#define STACK_USE_ANNOUNCE			// Microchip Embedded Ethernet Device Discoverer server/client
 //#define STACK_USE_DNS				// Domain Name Service Client for resolving hostname strings to IP addresses
 //#define STACK_USE_DNS_SERVER			// Domain Name Service Server for redirection to the local device
 //#define STACK_USE_NBNS			// NetBIOS Name Service Server for repsonding to NBNS hostname broadcast queries
@@ -152,7 +149,7 @@
  *   To clear EEPROM, hold BUTTON0, reset the board, and continue
  *   holding until the LEDs flash.  Release, and reset again.
  */
-#define MY_DEFAULT_HOST_NAME		"henallux-it-card"
+#define MY_DEFAULT_HOST_NAME		"TEMS-U01"
 
 #define MY_DEFAULT_MAC_BYTE1            (0x00)	// Use the default of 00-04-A3-00-00-01
 #define MY_DEFAULT_MAC_BYTE2            (0x04)	// if using an ENCX24J600, MRF24WB0M, or
@@ -161,10 +158,10 @@
 #define MY_DEFAULT_MAC_BYTE5            (0x00)	// internal factory programmed MAC
 #define MY_DEFAULT_MAC_BYTE6            (0x01)	// address instead.
 
-#define MY_DEFAULT_IP_ADDR_BYTE1        (10ul)	//adresse ip : 10.10.10.2
-#define MY_DEFAULT_IP_ADDR_BYTE2        (101ul)
-#define MY_DEFAULT_IP_ADDR_BYTE3        (23ul)
-#define MY_DEFAULT_IP_ADDR_BYTE4        (20ul)
+#define MY_DEFAULT_IP_ADDR_BYTE1        (192ul)	//adresse ip : 192.168.0.200
+#define MY_DEFAULT_IP_ADDR_BYTE2        (168ul)
+#define MY_DEFAULT_IP_ADDR_BYTE3        (0ul)
+#define MY_DEFAULT_IP_ADDR_BYTE4        (200ul)
 
 #define MY_DEFAULT_MASK_BYTE1           (255ul)	//masque 255.255.255.0
 #define MY_DEFAULT_MASK_BYTE2           (255ul)
@@ -172,14 +169,14 @@
 #define MY_DEFAULT_MASK_BYTE4           (0ul)
 
 #define MY_DEFAULT_GATE_BYTE1           (10ul)
-#define MY_DEFAULT_GATE_BYTE2           (101ul)
-#define MY_DEFAULT_GATE_BYTE3           (23ul)
-#define MY_DEFAULT_GATE_BYTE4           (1ul)
+#define MY_DEFAULT_GATE_BYTE2           (10ul)
+#define MY_DEFAULT_GATE_BYTE3           (10ul)
+#define MY_DEFAULT_GATE_BYTE4           (3ul)
 
-#define MY_DEFAULT_PRIMARY_DNS_BYTE1	(0ul)
-#define MY_DEFAULT_PRIMARY_DNS_BYTE2	(0ul)
-#define MY_DEFAULT_PRIMARY_DNS_BYTE3	(0ul)
-#define MY_DEFAULT_PRIMARY_DNS_BYTE4	(0ul)
+#define MY_DEFAULT_PRIMARY_DNS_BYTE1	(10ul)
+#define MY_DEFAULT_PRIMARY_DNS_BYTE2	(10ul)
+#define MY_DEFAULT_PRIMARY_DNS_BYTE3	(10ul)
+#define MY_DEFAULT_PRIMARY_DNS_BYTE4	(1ul)
 
 #define MY_DEFAULT_SECONDARY_DNS_BYTE1	(0ul)
 #define MY_DEFAULT_SECONDARY_DNS_BYTE2	(0ul)
@@ -192,24 +189,24 @@
 //   If not using a PIC32MX7XX/6XX device, ignore this section.
 // =======================================================================
 #define	ETH_CFG_LINK			0		// set to 1 if you need to config the link to specific following parameters
-							// otherwise the default connection will be attempted
-							// depending on the selected PHY
-	#define	ETH_CFG_AUTO		1		// use auto negotiation
-	#define	ETH_CFG_10		1               // use/advertise 10 Mbps capability
-	#define	ETH_CFG_100		1       	// use/advertise 100 Mbps capability
-	#define	ETH_CFG_HDUPLEX		1		// use/advertise half duplex capability
-	#define	ETH_CFG_FDUPLEX		1		// use/advertise full duplex capability
-	#define	ETH_CFG_AUTO_MDIX	1		// use/advertise auto MDIX capability
-	#define	ETH_CFG_SWAP_MDIX	1		// use swapped MDIX. else normal MDIX
+                                                        // otherwise the default connection will be attempted
+                                                        // depending on the selected PHY
+#define	ETH_CFG_AUTO                    1		// use auto negotiation
+#define	ETH_CFG_10			1		// use/advertise 10 Mbps capability
+#define	ETH_CFG_100			1		// use/advertise 100 Mbps capability
+#define	ETH_CFG_HDUPLEX                 1		// use/advertise half duplex capability
+#define	ETH_CFG_FDUPLEX                 1		// use/advertise full duplex capability
+#define	ETH_CFG_AUTO_MDIX               1		// use/advertise auto MDIX capability
+#define	ETH_CFG_SWAP_MDIX               1		// use swapped MDIX. else normal MDIX
 
 #define EMAC_TX_DESCRIPTORS		2		// number of the TX descriptors to be created
 #define EMAC_RX_DESCRIPTORS		8		// number of the RX descriptors and RX buffers to be created
 
-#define	EMAC_RX_BUFF_SIZE		1536	// size of a RX buffer. should be multiple of 16
-										// this is the size of all receive buffers processed by the ETHC
-										// The size should be enough to accomodate any network received packet
-										// If the packets are larger, they will have to take multiple RX buffers
-										// The current implementation does not handle this situation right now and the packet is discarded.
+#define	EMAC_RX_BUFF_SIZE		1536            // size of a RX buffer. should be multiple of 16
+                                                        // this is the size of all receive buffers processed by the ETHC
+                                                        // The size should be enough to accomodate any network received packet
+                                                        // If the packets are larger, they will have to take multiple RX buffers
+                                                        // The current implementation does not handle this situation right now and the packet is discarded.
 
 
 // =======================================================================
@@ -238,25 +235,25 @@
  */
 	// Allocate how much total RAM (in bytes) you want to allocate
 	// for use by your TCP TCBs, RX FIFOs, and TX FIFOs.
-	#define TCP_ETH_RAM_SIZE					(790ul)
-	#define TCP_PIC_RAM_SIZE					(0ul)
-	#define TCP_SPI_RAM_SIZE					(0ul)
-	#define TCP_SPI_RAM_BASE_ADDRESS			(0x00)
+	#define TCP_ETH_RAM_SIZE				(790ul)
+	#define TCP_PIC_RAM_SIZE				(0ul)
+	#define TCP_SPI_RAM_SIZE				(0ul)
+	#define TCP_SPI_RAM_BASE_ADDRESS                        (0x00)
 
 	// Define names of socket types
 	#define TCP_SOCKET_TYPES
-		#define TCP_PURPOSE_GENERIC_TCP_CLIENT 0
-		#define TCP_PURPOSE_GENERIC_TCP_SERVER 1
-		#define TCP_PURPOSE_TELNET 2
-		#define TCP_PURPOSE_FTP_COMMAND 3
-		#define TCP_PURPOSE_FTP_DATA 4
-		#define TCP_PURPOSE_TCP_PERFORMANCE_TX 5
-		#define TCP_PURPOSE_TCP_PERFORMANCE_RX 6
-		#define TCP_PURPOSE_UART_2_TCP_BRIDGE 7
-		#define TCP_PURPOSE_HTTP_SERVER 8
-		#define TCP_PURPOSE_DEFAULT 9
-		#define TCP_PURPOSE_BERKELEY_SERVER 10
-		#define TCP_PURPOSE_BERKELEY_CLIENT 11
+		#define TCP_PURPOSE_GENERIC_TCP_CLIENT          0
+		#define TCP_PURPOSE_GENERIC_TCP_SERVER          1
+		#define TCP_PURPOSE_TELNET                      2
+		#define TCP_PURPOSE_FTP_COMMAND                 3
+		#define TCP_PURPOSE_FTP_DATA                    4
+		#define TCP_PURPOSE_TCP_PERFORMANCE_TX          5
+		#define TCP_PURPOSE_TCP_PERFORMANCE_RX          6
+		#define TCP_PURPOSE_UART_2_TCP_BRIDGE           7
+		#define TCP_PURPOSE_HTTP_SERVER                 8
+		#define TCP_PURPOSE_DEFAULT                     9
+		#define TCP_PURPOSE_BERKELEY_SERVER             10
+		#define TCP_PURPOSE_BERKELEY_CLIENT             11
 	#define END_OF_TCP_SOCKET_TYPES
 
 	#if defined(__TCP_C)
@@ -347,7 +344,7 @@
 	#define HTTP_DEFAULT_FILE		"MaPageWeb.htm"
 	#define HTTPS_DEFAULT_FILE		"index.htm"
 	#define HTTP_DEFAULT_LEN		(14u)		// For buffer overrun protection.
-												// Set to longest length of above two strings.
+								// Set to longest length of above two strings.
 
 	// Configure MPFS over HTTP updating
 	// Comment this line to disable updating via HTTP
@@ -358,40 +355,40 @@
 
 	// Define which HTTP modules to use
 	// If not using a specific module, comment it to save resources
-	#define HTTP_USE_POST					// Enable POST support
-	#define HTTP_USE_COOKIES				// Enable cookie support
+	#define HTTP_USE_POST				// Enable POST support
+	#define HTTP_USE_COOKIES			// Enable cookie support
 	#define HTTP_USE_AUTHENTICATION			// Enable basic authentication support
 
 	//#define HTTP_NO_AUTH_WITHOUT_SSL		// Uncomment to require SSL before requesting a password
 
     // Define the listening port for the HTTP server
-  	#define HTTP_PORT               (80u)
+  	#define HTTP_PORT                   (80u)
 	
     // Define the listening port for the HTTPS server (if STACK_USE_SSL_SERVER is enabled)
-	#define HTTPS_PORT				(443u)
+	#define HTTPS_PORT                  (443u)
 	
     // Define the maximum data length for reading cookie and GET/POST arguments (bytes)
-	#define HTTP_MAX_DATA_LEN		(100u)
+	#define HTTP_MAX_DATA_LEN           (100u)
 	
     // Define the minimum number of bytes free in the TX FIFO before executing callbacks
-	#define HTTP_MIN_CALLBACK_FREE	(16u)
+	#define HTTP_MIN_CALLBACK_FREE      (16u)
 
 	//#define STACK_USE_HTTP_APP_RECONFIG		// Use the AppConfig web page in the Demo App (~2.5kb ROM, ~0b RAM)
-	//#define STACK_USE_HTTP_MD5_DEMO			// Use the MD5 Demo web page (~5kb ROM, ~160b RAM)
+	//#define STACK_USE_HTTP_MD5_DEMO		// Use the MD5 Demo web page (~5kb ROM, ~160b RAM)
 	//#define STACK_USE_HTTP_EMAIL_DEMO		// Use the e-mail demo web page
 
 // -- SSL Options --------------------------------------------------------
 
-	#define MAX_SSL_CONNECTIONS		(2ul)	// Maximum connections via SSL
-	#define MAX_SSL_SESSIONS		(2ul)	// Max # of cached SSL sessions
-	#define MAX_SSL_BUFFERS			(4ul)	// Max # of SSL buffers (2 per socket)
-	#define MAX_SSL_HASHES			(5ul)	// Max # of SSL hashes  (2 per, plus 1 to avoid deadlock)
+	#define MAX_SSL_CONNECTIONS         (2ul)	// Maximum connections via SSL
+	#define MAX_SSL_SESSIONS            (2ul)	// Max # of cached SSL sessions
+	#define MAX_SSL_BUFFERS             (4ul)	// Max # of SSL buffers (2 per socket)
+	#define MAX_SSL_HASHES              (5ul)	// Max # of SSL hashes  (2 per, plus 1 to avoid deadlock)
 
 	// Bits in SSL RSA key.  This parameter is used for SSL sever
 	// connections only.  The only valid value is 512 bits (768 and 1024
 	// bits do not work at this time).  Note, however, that SSL client
 	// operations do currently work up to 1024 bit RSA key length.
-	#define SSL_RSA_KEY_SIZE		(512ul)
+	#define SSL_RSA_KEY_SIZE            (512ul)
 
 
 // -- Telnet Options -----------------------------------------------------
@@ -402,15 +399,15 @@
 	// connections to work.  If fewer sockets are available than this
 	// definition, then the the lesser of the two quantities will be the
 	// actual limit.
-	#define MAX_TELNET_CONNECTIONS	(1u)
+	#define MAX_TELNET_CONNECTIONS      (1u)
 
 	// Default local listening port for the Telnet server.  Port 23 is the
 	// protocol default.
-	#define TELNET_PORT				(23u)
+	#define TELNET_PORT                 (23u)
 
 	// Default local listening port for the Telnet server when SSL secured.
 	// Port 992 is the telnets protocol default.
-	#define TELNETS_PORT			(992u)
+	#define TELNETS_PORT                (992u)
 
 	// Force all connecting clients to be SSL secured and connected via
 	// TELNETS_PORT.  Connections on port TELNET_PORT will be ignored.  If
@@ -420,8 +417,8 @@
 	//#define TELNET_REJECT_UNSECURED
 
 	// Default username and password required to login to the Telnet server.
-	#define TELNET_USERNAME			"admin"
-	#define TELNET_PASSWORD			"microchip"
+	#define TELNET_USERNAME             "admin"
+	#define TELNET_PASSWORD             "microchip"
 
 
 // -- SNMP Options -------------------------------------------------------

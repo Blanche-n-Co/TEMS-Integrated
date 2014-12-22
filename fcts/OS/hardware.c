@@ -7,7 +7,7 @@
 void InitHardware(void)
 {
     /*************************************
-    *-> Registres
+    *-> Horloge et registres
     **************************************/
     OSCCONbits.IRCF=0b111; // 16MhZ !!
 
@@ -15,7 +15,7 @@ void InitHardware(void)
     ANSELA  = NUMERIC;
     ANSELB  = NUMERIC;
     ANSELC  = NUMERIC;
-    ANSELD  = NUMERIC;
+    ANSELD  = ANALOGIC;
     ANSELE  = NUMERIC;
 
 

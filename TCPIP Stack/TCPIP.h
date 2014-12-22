@@ -320,7 +320,7 @@
 	#include "SPIRAM.h"
 
 #if defined(STACK_USE_UDP)
-	#include "TCPIP Stack/UDP.h"
+	#include "UDP.h"
 #endif
 
 #if defined(STACK_USE_TCP)
@@ -374,7 +374,7 @@
 #endif
 
 #if defined(STACK_USE_ANNOUNCE)
-	#include "TCPIP Stack/Announce.h"
+	#include "Announce.h"
 #endif
 
 #if defined(STACK_USE_SNMP_SERVER)
