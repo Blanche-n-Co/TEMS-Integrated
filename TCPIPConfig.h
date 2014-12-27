@@ -158,7 +158,7 @@
 #define MY_DEFAULT_MAC_BYTE5            (0x00)	// internal factory programmed MAC
 #define MY_DEFAULT_MAC_BYTE6            (0x01)	// address instead.
 
-#define MY_DEFAULT_IP_ADDR_BYTE1        (192ul)	//adresse ip : 192.168.0.200
+#define MY_DEFAULT_IP_ADDR_BYTE1        (192ul)	//adresse ip : 192.168.0.201
 #define MY_DEFAULT_IP_ADDR_BYTE2        (168ul)
 #define MY_DEFAULT_IP_ADDR_BYTE3        (0ul)
 #define MY_DEFAULT_IP_ADDR_BYTE4        (200ul)
