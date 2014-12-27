@@ -1,7 +1,6 @@
 # Object files
 *.o
 *.ko
-*.o.d
 *.obj
 *.elf
 
@@ -37,9 +36,7 @@
 .LSOverride
 
 # Icon must end with two \r
-Icon
-*.jpg
-*.png
+Icon
 
 # Thumbnails
 ._*
