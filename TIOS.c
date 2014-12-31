@@ -6,6 +6,7 @@
 #include <delays.h>
 #include <string.h>
 
+#include "main.h"
 #include "TIOS.h"
 #include "fcts/LCD/xlcd.h"
 #include "fcts/OS/hardware.h"
@@ -74,13 +75,18 @@ static void DisplayMacValue(MAC_ADDR);
 
 
 // =======================================================================
-//   Déclaration des fonctions de callback
+//   Déclaration des varables pour Callback
 // =======================================================================
-void (*MaCB[MAXCALLBACKCHRONO])(void);          //Callback chrono
+//CallBack Chrono
+void (*MaCB[MAXCALLBACKCHRONO])(void);
 unsigned int TempsCB[MAXCALLBACKCHRONO];
 volatile unsigned int TickCB[MAXCALLBACKCHRONO];
 
-
+//CallBack Button
+void(*MaCBButton)(char*);           // Pointeur de fonction pour la fonction "void Manage_Button(volatile unsigned char *ptr_Button)" (main.c)
+volatile unsigned char Button;      // Variable qui indique le nom de la touche appuyée (UP, DOWN, LEFT, RIGHT, ENTER)
+char IDCB_ENABLE_INTERRUPT_BP = 0;  // ID de la callback utilisée pour la gestion des rebonds
+void ENABLE_INTERRUPT_BP(void);     // Fonction interne pour la gestion des rebonds
 
 
 
@@ -95,10 +101,13 @@ void TIOSInitialiser(void)
         MaCB[i] = 0;
         TempsCB[i] = 0;
     }
+    
+    //Initialisation pour variable Button
+     MaCBButton = 0;
 } 
 
 
-// ****************  EnregistrerFonctionDeRappel ******************************
+// ****************  EnregistrerFonctionDeRappel ***************************
 // Sauve l'adresse de la fonction à rappeler. Lorsque le nombre d'interruptions
 // aura atteint temps millisecondes, le système rappellera la fonction
 // *************************************************************************
@@ -118,7 +127,25 @@ unsigned char TIOSEnregistrerCB_TIMER(void(*ptFonction)(void), unsigned int tps)
 }
 
 
-// ****************  Retirer fonction de rappel ******************************
+
+// ****************  Enregistrer CallBack Button****************************
+// Sauve l'adresse de la fonction à rappeler
+// *************************************************************************
+void TIOSEnregistrerCB_Button(void(*ptFonction)(char*))
+{
+    //Sauver l'adresse de la fonction pour rappel
+    MaCBButton = ptFonction;
+}
+
+// ****************  Retirer fonction de rappel Button**********************
+void TIOSRetirerCB_Button(void)
+{
+    MaCBButton = 0;
+}
+
+
+
+// ****************  Retirer fonction de rappel ****************************
 // Libère l'emplacement de la callback
 // *************************************************************************
 void TIOSRetirerCB_TIMER(unsigned char IDCB)
@@ -157,8 +184,11 @@ void TIOSStart()
     PIE1bits.TMR1IE     = 1;		// Activation interruption Timer1 en overflow
     IPR1bits.TMR1IP     = 1;		// Activation interruption en Haute Priorité
 
+    //INT0 (Buttons)
+    INTCONbits.INT0IE = 1;              // Interruption INT0 activée
+    INTCON2bits.INTEDG0 = 0;            // Interruption sur flanc descendant activée
 
-
+    
     /*************************************
     *-> Configuration de l'affichage LCD
     **************************************/
@@ -226,6 +256,12 @@ void TIOSStart()
                     MaCB[idx]();                            //Rappel de la fonction enregistrée!
                 }
          }
+
+        if (!(Button ==NONE))                               //Check les conditions pour rappeler la fonction Bouton
+        {
+            MaCBButton (&Button);
+            Button = NONE;
+        }
      }
 }
 
@@ -250,22 +286,6 @@ void MyInterruptLow(void)
 #pragma interrupt MyInterruptHight
 void MyInterruptHight(void)
 {
-    //Flag interruption sur boutons
-    if(INTCONbits.INT0IF == 1){
-        Delay10KTCYx(2);                        //Delay of 5ms
-        if(BP_UP == 0)
-            BP_read_state = 1;
-        if(BP_MIDDLE == 0)
-            BP_read_state = 2;
-        if(BP_DOWN == 0)
-            BP_read_state = 3;
-        if(BP_LEFT == 0)
-            BP_read_state = 4;
-        if(BP_RIGHT == 0)
-            BP_read_state = 5;
-        INTCONbits.INT0IF = 0;
-    }
-
     //Flag interruption sur TIMER1
     if (PIR1bits.TMR1IF){
         unsigned char i;
@@ -278,6 +298,34 @@ void MyInterruptHight(void)
         
 	PIR1bits.TMR1IF = 0;
     }
+
+    //Flag interruption sur boutons
+    if(INTCONbits.INT0IF){
+        INT_BP_ANS = ANALOGIC;                                                     // GESTION DES REBONDS
+        IDCB_ENABLE_INTERRUPT_BP = TIOSEnregistrerCB_TIMER(ENABLE_INTERRUPT_BP, 1000);  // INT_BP désactivées pour 500 ms
+
+        if (INT_BP == 0)
+        {
+            if(!BP_UP)              // MEMORISATION DU BOUTON POUSSOIR
+                Button = UP;
+            else if(!BP_DOWN)
+                Button = DOWN;
+            else if(!BP_RIGHT)
+                Button = RIGHT;
+            else if(!BP_LEFT)
+                Button = LEFT;
+            else if(!BP_MIDDLE)
+                Button = CENTER;
+        }
+        INTCONbits.INT0IF = 0;
+    }
+}
+
+void ENABLE_INTERRUPT_BP(void)
+{
+    //INTCONbits.INT0IE = 1;      // Interruption INT0 activée
+    INT_BP_ANS = NUMERIC;
+    TIOSRetirerCB_TIMER(IDCB_ENABLE_INTERRUPT_BP);
 }
 
 
