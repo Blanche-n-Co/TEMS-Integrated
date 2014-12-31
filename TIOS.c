@@ -159,7 +159,7 @@ void TIOSStart()
     IPR1bits.RC1IP      = 1;
 
     //TIMER1
-    TIMER1_100ms();                     // Interruptions toutes les ms par Timer1
+    TIMER1_1ms();                     // Interruptions toutes les ms par Timer1
     PIE1bits.TMR1IE     = 1;		// Activation interruption Timer1 en overflow
     IPR1bits.TMR1IP     = 1;		// Activation interruption en Haute Priorité
 
@@ -275,23 +275,3 @@ void ENABLE_INTERRUPT_BP(void)
     INT_BP_ANS = NUMERIC;
     TIOSRetirerCB_TIMER(IDCB_ENABLE_INTERRUPT_BP);
 }
-
-
-
-// =======================================================================
-//   Prérequis fonctionnement LCD
-// =======================================================================
-void DelayFor18TCY(void){
-    Nop(); Nop(); Nop(); Nop(); Nop(); Nop();
-    Nop(); Nop(); Nop(); Nop(); Nop(); Nop();
-    Nop(); Nop(); Nop(); Nop(); Nop(); Nop();
-}
-
-void DelayPORXLCD(void){
-    Delay10KTCYx(6);}           // 15ms
-
-void DelayXLCD(void){
-    Delay10KTCYx(2);}           //  5ms
-
-
-

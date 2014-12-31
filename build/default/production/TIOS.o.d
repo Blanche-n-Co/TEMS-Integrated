@@ -11,6 +11,7 @@ build/default/production/TIOS.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/UDP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/TCP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/ICMP.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/main.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/OS/hardware.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/OS/My_TIMERS.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/pconfig.h  \

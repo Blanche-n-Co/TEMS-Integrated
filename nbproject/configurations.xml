@@ -31,14 +31,20 @@
       </logicalFolder>
       <logicalFolder name="f4" displayName="Generic" projectFiles="true">
         <itemPath>main.h</itemPath>
-        <itemPath>fcts/OS/hardware.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f2" displayName="LCD" projectFiles="true">
         <itemPath>fcts/LCD/xlcd.h</itemPath>
+        <itemPath>fcts/LCD/writeOnLCD.h</itemPath>
+        <itemPath>fcts/LCD/delaysXLCD.h</itemPath>
       </logicalFolder>
       <logicalFolder name="f3" displayName="OS" projectFiles="true">
         <itemPath>fcts/OS/My_TIMERS.h</itemPath>
         <itemPath>TIOS.h</itemPath>
+        <itemPath>fcts/OS/hardware.h</itemPath>
+      </logicalFolder>
+      <logicalFolder name="f5" displayName="Temperature" projectFiles="true">
+        <itemPath>fcts/Temperature/1wire.h</itemPath>
+        <itemPath>fcts/Temperature/ftoa.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -76,11 +82,17 @@
           <itemPath>fcts/LCD/setddram.c</itemPath>
           <itemPath>fcts/LCD/wcmdxlcd.c</itemPath>
           <itemPath>fcts/LCD/writdata.c</itemPath>
+          <itemPath>fcts/LCD/writeOnLCD.c</itemPath>
+          <itemPath>fcts/LCD/delaysXLCD.c</itemPath>
         </logicalFolder>
         <logicalFolder name="f3" displayName="OS" projectFiles="true">
           <itemPath>fcts/OS/hardware.c</itemPath>
           <itemPath>fcts/OS/My_TIMERS.c</itemPath>
           <itemPath>TIOS.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f4" displayName="Temperature" projectFiles="true">
+          <itemPath>fcts/Temperature/1wire.c</itemPath>
+          <itemPath>fcts/Temperature/ftoa.c</itemPath>
         </logicalFolder>
       </logicalFolder>
       <itemPath>Main.c</itemPath>
@@ -95,6 +107,7 @@
     <Elem>TCPIP Stack</Elem>
     <Elem>fcts/LCD</Elem>
     <Elem>fcts/OS</Elem>
+    <Elem>fcts/Temperature</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
