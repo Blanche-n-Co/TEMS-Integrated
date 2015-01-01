@@ -146,20 +146,14 @@ void TIOSStart()
 {
     unsigned char idx;
 
-    //InitHardware();
-
     /*************************************
     *-> Configuration des interruptions
     **************************************/
-    INTCONbits.GIE      = 1;		// Active les interruptions générales
-    INTCONbits.PEIE     = 1;		// Active les interruptions des peripheriques
-    RCONbits.IPEN       = 1;		// Active les priorite des interruptions (indispensable pour les basses)
-
     //USART1
     IPR1bits.RC1IP      = 1;
 
     //TIMER1
-    TIMER1_1ms();                     // Interruptions toutes les ms par Timer1
+    TIMER1_1ms();                       // Interruptions toutes les ms par Timer1
     PIE1bits.TMR1IE     = 1;		// Activation interruption Timer1 en overflow
     IPR1bits.TMR1IP     = 1;		// Activation interruption en Haute Priorité
 
@@ -167,14 +161,6 @@ void TIOSStart()
     INTCONbits.INT0IE = 1;              // Interruption INT0 activée
     INTCON2bits.INTEDG0 = 0;            // Interruption sur flanc descendant activée
 
-    
-    /*************************************
-    *-> Configuration de l'affichage LCD
-    **************************************/
-//    while(BusyXLCD());                  // Configuration du splash screen
-//    putrsXLCD("     T E M S    ");
-//    while(BusyXLCD());
-//    SetDDRamAddr(0x40);
 
 
     /*************************************
@@ -196,6 +182,9 @@ void TIOSStart()
     *-> Boucle principale
     **************************************/
     while(1){
+        StackTask();
+        StackApplications();
+
         for (idx = 0; idx < MAXCALLBACKCHRONO; idx++){      //Check les conditions pour rappeler les fonctions liées au temps
             if (MaCB[idx])                                  //Si on a l'adresse d'une fonction CB à cet index
                 if (TickCB[idx] >= TempsCB[idx])            //Si on est arrivé au nombre de mS demandé, on appelle la fonction

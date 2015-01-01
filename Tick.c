@@ -100,7 +100,7 @@ void TickInit(void)
     TMR0L = 0;
 
 	// Set up the timer interrupt
-	INTCON2bits.TMR0IP = 0;		// Low priority
+    INTCON2bits.TMR0IP = 0;		// Low priority
     INTCONbits.TMR0IF = 0;
     INTCONbits.TMR0IE = 1;		// Enable interrupt
 
