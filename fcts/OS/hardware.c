@@ -15,7 +15,7 @@ void InitHardware(void)
     ANSELA  = NUMERIC;
     ANSELB  = NUMERIC;
     ANSELC  = NUMERIC;
-    ANSELD  = ANALOGIC;
+    ANSELD  = NUMERIC;
     ANSELE  = NUMERIC;
 
 
@@ -66,4 +66,9 @@ void InitHardware(void)
     // Configuration Entrées Anamogique (ADC)
     ANSELDbits.ANSD4= ANALOGIC;             //RD4 (Photo Diode , AN24) en Analogique
     ANSELBbits.ANSB2= ANALOGIC;             //RB2 (EXT_INT, AN8) en Analogique
+
+    // Configuration des interruptions
+    INTCONbits.GIE      = 1;		// Active les interruptions générales
+    INTCONbits.PEIE     = 1;		// Active les interruptions des peripheriques
+    RCONbits.IPEN       = 1;		// Active les priorite des interruptions (indispensable pour les basses)
 }

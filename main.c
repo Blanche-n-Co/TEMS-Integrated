@@ -3,6 +3,8 @@
 // =======================================================================
 #include <p18cxxx.h>
 #include <p18f46k22.h>
+#include <string.h>
+#include <delays.h>
 
 #include "main.h"
 #include "TIOS.h"
@@ -45,12 +47,10 @@ unsigned char IDCB_LED  = 0;            // ID de la callback "LedModeBlink"
 
 
 /* TEMPERATURE */
-char IDCB_TemperatureProbe = 0;         // ID de la callback "TemperatureProbe"
-unsigned int Time_Measurement = 0;      // Variable qui mémorise la durée d'acquisition des températures
+float TemperatureCur =   0;             // Variable pour la température CURRENT
+float TemperatureMin = 100;             // Variable pour la température MINIMUM
+float TemperatureMax = -50;             // Variable pour la température MAXIMUM
 
-float TemperatureMin = 100;             // Variable qui mémorise la température Min
-float TemperatureMax = -50;             // Variable qui mémorise la température Max
-const char Unit_TEMP[]= "°C";
 
 
 /* ETHERNET */
@@ -99,7 +99,7 @@ void main(void){
     while(BusyXLCD());
     SetDDRamAddr(0x40);
 
-    
+
     /*************************************
     *-> Configuration de la pile TCP/IP
     **************************************/
@@ -112,10 +112,22 @@ void main(void){
     EthernetSocketInit();
 
 
+
+    /*************************************
+    *-> Configuration temperature
+    **************************************/
+    INTCONbits.GIE  = 0;                    // Désactive temporairement les interruptons
+    Convert_Temperature();                  // Lance une première conversion
+    INTCONbits.GIE  = 1;                    // Réactive les interruptons après conversion
+
+
+
     /*************************************
     *-> Enregistrement des Callbacks
     **************************************/
     TIOSEnregistrerCB_Button(ButtonsManagement);
+    TIOSEnregistrerCB_TIMER(TemperatureProbe, 1000);
+    TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
 
 
     /*************************************
@@ -138,13 +150,22 @@ void ButtonsManagement(volatile unsigned char *ptr_Button){
             break;
             
 	case DOWN :
+                IDCB_LED = TIOSEnregistrerCB_TIMER(LedModeBlink, 50);
             break;
 
 	case CENTER :
-            IDCB_LED = TIOSEnregistrerCB_TIMER(LedModeBlink, 50);
+                writeOnLCDS(FLUSH, 0x00,"");
             break;
 
         case RIGHT :
+                writeOnLCDS(FLUSH, 0x00,"Temperature:");
+                writeOnLCDF(NOFLUSH, AFTER, TemperatureCur, 1);
+                
+                prepareLCD(NOFLUSH, 0x40);
+                writeOnLCDS(NOFLUSH, AFTER,"MIN:");
+                writeOnLCDF(NOFLUSH, AFTER, TemperatureMin, 1);
+                writeOnLCDS(NOFLUSH, AFTER,"MAX:");
+                writeOnLCDF(NOFLUSH, AFTER, TemperatureMax, 1);
             break;
 
 	case LEFT :
@@ -157,23 +178,22 @@ void ButtonsManagement(volatile unsigned char *ptr_Button){
 //   Fonction de gestion de température
 // =======================================================================
 void TemperatureProbe(void){
-    float result;       // Valeur de la température lue sur le capteur DS18B20
-    
-    ++Time_Measurement;
-    writeOnLCDS (FLUSH, 0x00,"DATALOGGER ");
-
     INTCONbits.GIE = 0;
-    result = Read_Temperature();
+    TemperatureCur = Read_Temperature();
     INTCONbits.GIE = 1;
 
-    writeOnLCDF(NOFLUSH, AFTER, result, 1);
-    writeOnLCDC(NOFLUSH, AFTER, 0b11011111);	// Writes the symbole C°
+    if (TemperatureCur < TemperatureMin)
+        TemperatureMin = TemperatureCur;
 
-    if (result < TemperatureMin) TemperatureMin = result;
-    if (result > TemperatureMax) TemperatureMax = result;
+    if (TemperatureCur > TemperatureMax)
+        TemperatureMax = TemperatureCur;
 
-    if (result > TEMPERATURE_MAX){}
-    if (result < TEMPERATURE_MIN){}
+    if (TemperatureCur > TEMPERATURE_MAX){
+        //ACTION MODULE GSM
+    }
+    if (TemperatureCur < TEMPERATURE_MIN){
+        //ACTION MODULE GSM
+    }
     
     INTCONbits.GIE = 0;
     Convert_Temperature();
@@ -189,14 +209,16 @@ void EthernetSocketInit(void){
     StackApplications();
 
     //client = émet (port: 30302)
-    sendSocket = TCPOpen((DWORD)(PTR_BASE)"10.10.10.1",
+    sendSocket = TCPOpen((DWORD)(PTR_BASE)"10.10.10.3",
                          TCP_OPEN_IP_ADDRESS, EthernetPort, TCP_PURPOSE_DEFAULT);
+
+    // sendSocket = TCPOpen(0,TCP_OPEN_SERVER,EthernetPort,TCP_PURPOSE_DEFAULT);
 
     while(BusyXLCD());
     if(sendSocket == INVALID_SOCKET)
-        putrsXLCD("ETH: Socket Failed");
+        putrsXLCD("ETH: Socket Fail");
     else{
-        putrsXLCD("ETH: Connected... ");
+        putrsXLCD("ETH: Connected  ");
         Delay10KTCYx(200); Delay10KTCYx(200);
         DisplayIPValue(AppConfig.MyIPAddr);
     }    
@@ -204,6 +226,8 @@ void EthernetSocketInit(void){
 
 void EthernetSocketTX(void)
 {
+    char tmpCUR[6];
+    
     StackTask();
     StackApplications();
 
@@ -212,7 +236,8 @@ void EthernetSocketTX(void)
         ok = TCPIsPutReady(sendSocket);
 
         if(ok > 0){
-            ok = TCPPutArray(sendSocket,&DonneRecue[0],11);
+            ftoa(TemperatureCur, tmpCUR, 2, 'F');
+            ok = TCPPutArray(sendSocket,&tmpCUR[0], 11);
             TCPFlush(sendSocket);
         }
     }
@@ -252,7 +277,7 @@ static void DisplayIPValue(IP_ADDR IPVal)
     while(BusyXLCD());
     SetDDRamAddr(0x40);
     while(BusyXLCD());
-    putrsXLCD("ETH: ");
+    putrsXLCD("IP: ");
 
     for(i = 0 ; i < sizeof(IP_ADDR) ; i++){
         uitoa((WORD)IPVal.v[i], IPDigit);       //Converts to a null-terminated string
