@@ -32,6 +32,9 @@
       <logicalFolder name="f4" displayName="Generic" projectFiles="true">
         <itemPath>main.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f6" displayName="I2C" projectFiles="true">
+        <itemPath>fcts/i2c/i2c.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f2" displayName="LCD" projectFiles="true">
         <itemPath>fcts/LCD/xlcd.h</itemPath>
         <itemPath>fcts/LCD/writeOnLCD.h</itemPath>
@@ -71,6 +74,27 @@
           <itemPath>UDP.c</itemPath>
           <itemPath>UDPPerformanceTest.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="f5" displayName="I2C" projectFiles="true">
+          <itemPath>fcts/i2c/i2c2ack.c</itemPath>
+          <itemPath>fcts/i2c/i2c2clos.c</itemPath>
+          <itemPath>fcts/i2c/i2c2dtrd.c</itemPath>
+          <itemPath>fcts/i2c/i2c2eeap.c</itemPath>
+          <itemPath>fcts/i2c/i2c2eebw.c</itemPath>
+          <itemPath>fcts/i2c/i2c2eecr.c</itemPath>
+          <itemPath>fcts/i2c/i2c2eepw.c</itemPath>
+          <itemPath>fcts/i2c/i2c2eerr.c</itemPath>
+          <itemPath>fcts/i2c/i2c2eesr.c</itemPath>
+          <itemPath>fcts/i2c/i2c2gets.c</itemPath>
+          <itemPath>fcts/i2c/i2c2idle.c</itemPath>
+          <itemPath>fcts/i2c/i2c2nack.c</itemPath>
+          <itemPath>fcts/i2c/i2c2open.c</itemPath>
+          <itemPath>fcts/i2c/i2c2puts.c</itemPath>
+          <itemPath>fcts/i2c/i2c2read.c</itemPath>
+          <itemPath>fcts/i2c/i2c2rstr.c</itemPath>
+          <itemPath>fcts/i2c/i2c2stop.c</itemPath>
+          <itemPath>fcts/i2c/i2c2strt.c</itemPath>
+          <itemPath>fcts/i2c/i2c2writ.c</itemPath>
+        </logicalFolder>
         <logicalFolder name="f2" displayName="LCD" projectFiles="true">
           <itemPath>fcts/LCD/busyxlcd.c</itemPath>
           <itemPath>fcts/LCD/openxlcd.c</itemPath>
@@ -108,6 +132,7 @@
     <Elem>fcts/LCD</Elem>
     <Elem>fcts/OS</Elem>
     <Elem>fcts/Temperature</Elem>
+    <Elem>fcts/i2c</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

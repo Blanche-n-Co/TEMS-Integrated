@@ -9,6 +9,7 @@
 #include "main.h"
 #include "TIOS.h"
 
+#include "fcts/i2c/i2c.h"
 #include "fcts/LCD/xlcd.h"
 #include "fcts/OS/hardware.h"
 #include "fcts/LCD/writeOnLCD.h"
@@ -47,14 +48,29 @@ unsigned char IDCB_LED  = 0;            // ID de la callback "LedModeBlink"
 
 
 /* TEMPERATURE */
-float TemperatureCur =   0;             // Variable pour la température CURRENT
-float TemperatureMin = 100;             // Variable pour la température MINIMUM
-float TemperatureMax = -50;             // Variable pour la température MAXIMUM
+float TemperatureCur    =   0;             // Variable pour la température CURRENT
+float TemperatureMax    = -50;             // Variable pour la température MAXIMUM
+float TemperatureMin    = 100;             // Variable pour la température MINIMUM
 
+
+/* REAL TIME CLOCK */
+unsigned char ClockReadBuffer[]={0,0,0,0,0,0,0,0};//Obligatoire pour faire init
+unsigned char ClockConvBuffer[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+unsigned char ClockInitBuffer[]={
+    0x12,   //   12 - Seconds (doit être de min 1 sec car ne peut commencer par 0)
+    0x43,   //   31 - Minutes
+    0x13,   //   13 - Hours format 24h
+    0x04,   //Jeudi - Days
+    0x08,   //   08 - Date
+    0x05,   //  Mai - Month
+    0x14,   // 2014 - Year
+    0x01,   // DOIT être définit à min 1 pour ne pas terminer avec un 0 (puts)
+    0x00    // Arrête la transmission avec puts
+};
 
 
 /* ETHERNET */
-#define EthernetPort    30302
+#define EthernetPort    8080
 #define MaxLenghtRX     30
 APP_CONFIG              AppConfig;      // Structure déclarée dans StackTsk.h
                                         //(utiliser ds la fonction init_appconfig)
@@ -74,6 +90,11 @@ void ButtonsManagement(volatile unsigned char *ptr_Button);     //Gestion des to
 
 void TemperatureProbe(void);            // Gestion de la température
 
+void ClockInit(void);                   // Initialisation de l'I2C (+valeurs)
+void ClockRead(void);                   // Lecture de l'horloge
+void ClockShow(void);                   // Affichage de l'horloge
+void BCD2ASC(unsigned char, char*);     // Conversion BCD vers ASCII
+
 void EthernetSocketInit(void);          // Initialisation d'un socket (module Ethernet)
 void EthernetSocketTX(void);            // Fonction d'envoie par Ethernet
 void EthernetSocketRX(void);            // Fonction de réception par Ethernet
@@ -86,6 +107,7 @@ static void DisplayIPValue(IP_ADDR);    // Affichage adresse IP initialisée
 //   Programme principal
 // =======================================================================
 void main(void){
+
     InitHardware();                         // Initialisation des valeurs systèmes
     TIOSInitialiser();                      // Initialisation de l'OS (appel des Callbacks)
 
@@ -101,6 +123,20 @@ void main(void){
 
 
     /*************************************
+    *-> Configuration temperature
+    **************************************/
+    INTCONbits.GIE  = 0;                    // Désactive temporairement les interruptons
+    Convert_Temperature();                  // Lance une première conversion
+    INTCONbits.GIE  = 1;                    // Réactive les interruptons après conversion
+
+
+    /*************************************
+    *-> Configuration horloge
+    **************************************/
+    ClockInit();                            //Initialisation de l'horloge et valeur de départ
+
+
+    /*************************************
     *-> Configuration de la pile TCP/IP
     **************************************/
     ENC_CS_TRIS         = 0;                // On définit le module utilisé sur le bus SPI
@@ -112,21 +148,12 @@ void main(void){
     EthernetSocketInit();
 
 
-
-    /*************************************
-    *-> Configuration temperature
-    **************************************/
-    INTCONbits.GIE  = 0;                    // Désactive temporairement les interruptons
-    Convert_Temperature();                  // Lance une première conversion
-    INTCONbits.GIE  = 1;                    // Réactive les interruptons après conversion
-
-
-
     /*************************************
     *-> Enregistrement des Callbacks
     **************************************/
     TIOSEnregistrerCB_Button(ButtonsManagement);
     TIOSEnregistrerCB_TIMER(TemperatureProbe, 1000);
+    TIOSEnregistrerCB_TIMER(EthernetSocketRX,  500);
     TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
 
 
@@ -147,6 +174,8 @@ void LedModeBlink(void){
 void ButtonsManagement(volatile unsigned char *ptr_Button){
     switch (*ptr_Button){
         case UP :
+                ClockRead();
+                ClockShow();
             break;
             
 	case DOWN :
@@ -154,14 +183,15 @@ void ButtonsManagement(volatile unsigned char *ptr_Button){
             break;
 
 	case CENTER :
-                writeOnLCDS(FLUSH, 0x00,"");
+                writeOnLCDS(FLUSH,   0x00, "     T E M S    ");
+                writeOnLCDS(NOFLUSH, 0x40, "Choose an option");
             break;
 
         case RIGHT :
-                writeOnLCDS(FLUSH, 0x00,"Temperature:");
+                writeOnLCDS(FLUSH,   0x00, "Temperature:");
                 writeOnLCDF(NOFLUSH, AFTER, TemperatureCur, 1);
                 
-                prepareLCD(NOFLUSH, 0x40);
+                prepareLCD(NOFLUSH,  0x40);
                 writeOnLCDS(NOFLUSH, AFTER,"MIN:");
                 writeOnLCDF(NOFLUSH, AFTER, TemperatureMin, 1);
                 writeOnLCDS(NOFLUSH, AFTER,"MAX:");
@@ -202,17 +232,118 @@ void TemperatureProbe(void){
 
 
 // =======================================================================
+//   Fonction de lecture de l'heure
+// =======================================================================
+void ClockInit(void){
+    //I2C State (Initialization)
+    TRISDbits.TRISD0 = 1;
+    TRISDbits.TRISD1 = 1;
+
+    OpenI2C2( MASTER, SLEW_OFF);
+    SSP2ADD = 0x27;             //Baud rate
+
+    //Ecriture de l'heure
+    IdleI2C2();
+    StartI2C2();                //Condition de START équivalent à SSP2CON2bits.SEN = 1;
+    while(SSP2CON2bits.SEN);    //Attends qu'il soit près
+    WriteI2C2(0b11010000);      //Adresse du périphérique et mode d'écriture (0)
+    WriteI2C2(0b00000000);      //Envoie l'adresse de start dans laquelle on commence à écrire
+
+    //On commence à écrire les données en se rapportant au format BCD (DS1307)
+    //On définit un tableau pour éviter de faire des write pour chaque valeurs
+    putsI2C2(&ClockInitBuffer[0]);   //Le tableau s'incrémente seul
+    StopI2C2();
+}
+
+
+// =======================================================================
+//   Fonction de lecture de l'heure
+// =======================================================================
+void ClockRead(void){
+    //Number of BYTES to read
+    int i = 0;
+    int nbBytes = 3;
+    unsigned char *ptr = &ClockConvBuffer[0];
+
+    Delay10KTCYx(200);
+    Delay10KTCYx(200);
+
+    IdleI2C2();
+    StartI2C2();
+    while(SSP2CON2bits.SEN);
+    WriteI2C2(0b11010000);   //On doit utiliser le rewrite
+    WriteI2C2(0b00000000);
+
+    RestartI2C2();
+    while(SSP2CON2bits.RSEN);
+    WriteI2C2(0b11010001);
+
+    getsI2C2(&ClockReadBuffer[0],nbBytes);
+    StopI2C2();
+
+    for(i=0 ; i < nbBytes ; i++, ptr+=2){
+        BCD2ASC(ClockReadBuffer[i], ptr);}
+    *ptr = 0;
+
+    ptr = &ClockConvBuffer[0];
+}
+
+
+// =======================================================================
+//   Fonction d'affichage de l'heure
+// =======================================================================
+void ClockShow(void){
+    //Lecture de l'heure
+    ClockRead();
+
+    writeOnLCDS(FLUSH, 0x00,"Date: ");
+    //IMPRESSION DATE
+
+    writeOnLCDS(NOFLUSH, 0x40,"Time: ");
+
+    while(BusyXLCD());
+    WriteDataXLCD(ClockConvBuffer[4]);
+    while(BusyXLCD());
+    WriteDataXLCD(ClockConvBuffer[5]);
+
+    while(BusyXLCD());
+    WriteDataXLCD(':');
+
+    while(BusyXLCD());
+    WriteDataXLCD(ClockConvBuffer[2]);
+    while(BusyXLCD());
+    WriteDataXLCD(ClockConvBuffer[3]);
+
+    while(BusyXLCD());
+    WriteDataXLCD(':');
+
+    while(BusyXLCD());
+    WriteDataXLCD(ClockConvBuffer[0]);
+    while(BusyXLCD());
+    WriteDataXLCD(ClockConvBuffer[1]);
+}
+
+
+// =======================================================================
+//   Fonction de conversion BCD to ASCII
+// =======================================================================
+void BCD2ASC(unsigned char src, char *dest){
+    static const char outputs[] = "0123456789ABCDEF";
+    *dest++ = outputs[src>>4];
+    *dest++ = outputs[src&0x0f];
+}
+
+
+// =======================================================================
 //   Fonctions de gestion de l'ethernet
 // =======================================================================
 void EthernetSocketInit(void){
     StackTask();
     StackApplications();
 
-    //client = émet (port: 30302)
+    //client = émet
     sendSocket = TCPOpen((DWORD)(PTR_BASE)"10.10.10.3",
                          TCP_OPEN_IP_ADDRESS, EthernetPort, TCP_PURPOSE_DEFAULT);
-
-    // sendSocket = TCPOpen(0,TCP_OPEN_SERVER,EthernetPort,TCP_PURPOSE_DEFAULT);
 
     while(BusyXLCD());
     if(sendSocket == INVALID_SOCKET)
@@ -237,7 +368,7 @@ void EthernetSocketTX(void)
 
         if(ok > 0){
             ftoa(TemperatureCur, tmpCUR, 2, 'F');
-            ok = TCPPutArray(sendSocket,&tmpCUR[0], 11);
+            ok = TCPPutArray(sendSocket,&tmpCUR[0], sizeof(float));
             TCPFlush(sendSocket);
         }
     }
@@ -256,12 +387,12 @@ void EthernetSocketRX(void)
             for(i=0 ; i<=MaxLenghtRX ; i++)     // Remise à zéro du tableau des données
                     DonneRecue[i]=0;
 
-            ok = TCPGetArray(sendSocket,&DonneRecue[0],nbrRecu);
+            ok = TCPGetArray(sendSocket,&DonneRecue[0], nbrRecu);
 
             if(DonneRecue[0] == 35)           // Commandes: 35 = #
             {
-                if(strcmppgm2ram(DonneRecue,"#Led")==0){
-                    //Led;
+                if(strcmppgm2ram(DonneRecue,"#LED") == 0){
+                    LED = 1;
                 }
             }
         }

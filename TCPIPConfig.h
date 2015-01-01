@@ -61,8 +61,8 @@
  *   Uncomment or comment the following lines to enable or
  *   disabled the following high-level application modules.
  */
-#define STACK_USE_IP_GLEANING
-#define STACK_USE_ANNOUNCE			// Microchip Embedded Ethernet Device Discoverer server/client
+//#define STACK_USE_IP_GLEANING
+//#define STACK_USE_ANNOUNCE			// Microchip Embedded Ethernet Device Discoverer server/client
 #define STACK_USE_ICMP_SERVER			// Ping query and response capability
 #define STACK_USE_ICMP_CLIENT			// Ping transmission capability
 

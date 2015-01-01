@@ -8,7 +8,6 @@ build/default/production/TIOS.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/MAC.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/IP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/ARP.h  \
-	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/UDP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/TCP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/ICMP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/main.h  \
@@ -25,5 +24,4 @@ build/default/production/TIOS.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/XEEPROM.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/SPIFlash.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/SPIRAM.h  \
-	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/Announce.h  \
 
