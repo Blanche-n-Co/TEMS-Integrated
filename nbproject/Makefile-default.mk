@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=ARP.c Announce.c DNS.c ENC28J60.c Helpers.c ICMP.c IP.c PICDelay.c StackTsk.c TCP.c TCPPerformanceTest.c Tick.c UDP.c UDPPerformanceTest.c fcts/LCD/busyxlcd.c fcts/LCD/openxlcd.c fcts/LCD/putrxlcd.c fcts/LCD/putsxlcd.c fcts/LCD/readaddr.c fcts/LCD/readdata.c fcts/LCD/setcgram.c fcts/LCD/setddram.c fcts/LCD/wcmdxlcd.c fcts/LCD/writdata.c fcts/LCD/writeOnLCD.c fcts/LCD/delaysXLCD.c fcts/OS/hardware.c fcts/OS/My_TIMERS.c TIOS.c fcts/Temperature/1wire.c fcts/Temperature/ftoa.c Main.c fcts/i2c/i2c2ack.c fcts/i2c/i2c2clos.c fcts/i2c/i2c2dtrd.c fcts/i2c/i2c2eeap.c fcts/i2c/i2c2eebw.c fcts/i2c/i2c2eecr.c fcts/i2c/i2c2eepw.c fcts/i2c/i2c2eerr.c fcts/i2c/i2c2eesr.c fcts/i2c/i2c2gets.c fcts/i2c/i2c2idle.c fcts/i2c/i2c2nack.c fcts/i2c/i2c2open.c fcts/i2c/i2c2puts.c fcts/i2c/i2c2read.c fcts/i2c/i2c2rstr.c fcts/i2c/i2c2stop.c fcts/i2c/i2c2strt.c fcts/i2c/i2c2writ.c
+SOURCEFILES_QUOTED_IF_SPACED=ARP.c Announce.c DNS.c ENC28J60.c Helpers.c ICMP.c IP.c PICDelay.c StackTsk.c TCP.c TCPPerformanceTest.c Tick.c UDP.c UDPPerformanceTest.c fcts/i2c/i2c2ack.c fcts/i2c/i2c2clos.c fcts/i2c/i2c2dtrd.c fcts/i2c/i2c2eeap.c fcts/i2c/i2c2eebw.c fcts/i2c/i2c2eecr.c fcts/i2c/i2c2eepw.c fcts/i2c/i2c2eerr.c fcts/i2c/i2c2eesr.c fcts/i2c/i2c2gets.c fcts/i2c/i2c2idle.c fcts/i2c/i2c2nack.c fcts/i2c/i2c2open.c fcts/i2c/i2c2puts.c fcts/i2c/i2c2read.c fcts/i2c/i2c2rstr.c fcts/i2c/i2c2stop.c fcts/i2c/i2c2strt.c fcts/i2c/i2c2writ.c fcts/LCD/busyxlcd.c fcts/LCD/openxlcd.c fcts/LCD/putrxlcd.c fcts/LCD/putsxlcd.c fcts/LCD/readaddr.c fcts/LCD/readdata.c fcts/LCD/setcgram.c fcts/LCD/setddram.c fcts/LCD/wcmdxlcd.c fcts/LCD/writdata.c fcts/LCD/writeOnLCD.c fcts/LCD/delaysXLCD.c fcts/OS/hardware.c fcts/OS/My_TIMERS.c TIOS.c fcts/Temperature/1wire.c fcts/Temperature/ftoa.c Main.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ARP.o ${OBJECTDIR}/Announce.o ${OBJECTDIR}/DNS.o ${OBJECTDIR}/ENC28J60.o ${OBJECTDIR}/Helpers.o ${OBJECTDIR}/ICMP.o ${OBJECTDIR}/IP.o ${OBJECTDIR}/PICDelay.o ${OBJECTDIR}/StackTsk.o ${OBJECTDIR}/TCP.o ${OBJECTDIR}/TCPPerformanceTest.o ${OBJECTDIR}/Tick.o ${OBJECTDIR}/UDP.o ${OBJECTDIR}/UDPPerformanceTest.o ${OBJECTDIR}/fcts/LCD/busyxlcd.o ${OBJECTDIR}/fcts/LCD/openxlcd.o ${OBJECTDIR}/fcts/LCD/putrxlcd.o ${OBJECTDIR}/fcts/LCD/putsxlcd.o ${OBJECTDIR}/fcts/LCD/readaddr.o ${OBJECTDIR}/fcts/LCD/readdata.o ${OBJECTDIR}/fcts/LCD/setcgram.o ${OBJECTDIR}/fcts/LCD/setddram.o ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o ${OBJECTDIR}/fcts/LCD/writdata.o ${OBJECTDIR}/fcts/LCD/writeOnLCD.o ${OBJECTDIR}/fcts/LCD/delaysXLCD.o ${OBJECTDIR}/fcts/OS/hardware.o ${OBJECTDIR}/fcts/OS/My_TIMERS.o ${OBJECTDIR}/TIOS.o ${OBJECTDIR}/fcts/Temperature/1wire.o ${OBJECTDIR}/fcts/Temperature/ftoa.o ${OBJECTDIR}/Main.o ${OBJECTDIR}/fcts/i2c/i2c2ack.o ${OBJECTDIR}/fcts/i2c/i2c2clos.o ${OBJECTDIR}/fcts/i2c/i2c2dtrd.o ${OBJECTDIR}/fcts/i2c/i2c2eeap.o ${OBJECTDIR}/fcts/i2c/i2c2eebw.o ${OBJECTDIR}/fcts/i2c/i2c2eecr.o ${OBJECTDIR}/fcts/i2c/i2c2eepw.o ${OBJECTDIR}/fcts/i2c/i2c2eerr.o ${OBJECTDIR}/fcts/i2c/i2c2eesr.o ${OBJECTDIR}/fcts/i2c/i2c2gets.o ${OBJECTDIR}/fcts/i2c/i2c2idle.o ${OBJECTDIR}/fcts/i2c/i2c2nack.o ${OBJECTDIR}/fcts/i2c/i2c2open.o ${OBJECTDIR}/fcts/i2c/i2c2puts.o ${OBJECTDIR}/fcts/i2c/i2c2read.o ${OBJECTDIR}/fcts/i2c/i2c2rstr.o ${OBJECTDIR}/fcts/i2c/i2c2stop.o ${OBJECTDIR}/fcts/i2c/i2c2strt.o ${OBJECTDIR}/fcts/i2c/i2c2writ.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/ARP.o.d ${OBJECTDIR}/Announce.o.d ${OBJECTDIR}/DNS.o.d ${OBJECTDIR}/ENC28J60.o.d ${OBJECTDIR}/Helpers.o.d ${OBJECTDIR}/ICMP.o.d ${OBJECTDIR}/IP.o.d ${OBJECTDIR}/PICDelay.o.d ${OBJECTDIR}/StackTsk.o.d ${OBJECTDIR}/TCP.o.d ${OBJECTDIR}/TCPPerformanceTest.o.d ${OBJECTDIR}/Tick.o.d ${OBJECTDIR}/UDP.o.d ${OBJECTDIR}/UDPPerformanceTest.o.d ${OBJECTDIR}/fcts/LCD/busyxlcd.o.d ${OBJECTDIR}/fcts/LCD/openxlcd.o.d ${OBJECTDIR}/fcts/LCD/putrxlcd.o.d ${OBJECTDIR}/fcts/LCD/putsxlcd.o.d ${OBJECTDIR}/fcts/LCD/readaddr.o.d ${OBJECTDIR}/fcts/LCD/readdata.o.d ${OBJECTDIR}/fcts/LCD/setcgram.o.d ${OBJECTDIR}/fcts/LCD/setddram.o.d ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d ${OBJECTDIR}/fcts/LCD/writdata.o.d ${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d ${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d ${OBJECTDIR}/fcts/OS/hardware.o.d ${OBJECTDIR}/fcts/OS/My_TIMERS.o.d ${OBJECTDIR}/TIOS.o.d ${OBJECTDIR}/fcts/Temperature/1wire.o.d ${OBJECTDIR}/fcts/Temperature/ftoa.o.d ${OBJECTDIR}/Main.o.d ${OBJECTDIR}/fcts/i2c/i2c2ack.o.d ${OBJECTDIR}/fcts/i2c/i2c2clos.o.d ${OBJECTDIR}/fcts/i2c/i2c2dtrd.o.d ${OBJECTDIR}/fcts/i2c/i2c2eeap.o.d ${OBJECTDIR}/fcts/i2c/i2c2eebw.o.d ${OBJECTDIR}/fcts/i2c/i2c2eecr.o.d ${OBJECTDIR}/fcts/i2c/i2c2eepw.o.d ${OBJECTDIR}/fcts/i2c/i2c2eerr.o.d ${OBJECTDIR}/fcts/i2c/i2c2eesr.o.d ${OBJECTDIR}/fcts/i2c/i2c2gets.o.d ${OBJECTDIR}/fcts/i2c/i2c2idle.o.d ${OBJECTDIR}/fcts/i2c/i2c2nack.o.d ${OBJECTDIR}/fcts/i2c/i2c2open.o.d ${OBJECTDIR}/fcts/i2c/i2c2puts.o.d ${OBJECTDIR}/fcts/i2c/i2c2read.o.d ${OBJECTDIR}/fcts/i2c/i2c2rstr.o.d ${OBJECTDIR}/fcts/i2c/i2c2stop.o.d ${OBJECTDIR}/fcts/i2c/i2c2strt.o.d ${OBJECTDIR}/fcts/i2c/i2c2writ.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/ARP.o ${OBJECTDIR}/Announce.o ${OBJECTDIR}/DNS.o ${OBJECTDIR}/ENC28J60.o ${OBJECTDIR}/Helpers.o ${OBJECTDIR}/ICMP.o ${OBJECTDIR}/IP.o ${OBJECTDIR}/PICDelay.o ${OBJECTDIR}/StackTsk.o ${OBJECTDIR}/TCP.o ${OBJECTDIR}/TCPPerformanceTest.o ${OBJECTDIR}/Tick.o ${OBJECTDIR}/UDP.o ${OBJECTDIR}/UDPPerformanceTest.o ${OBJECTDIR}/fcts/i2c/i2c2ack.o ${OBJECTDIR}/fcts/i2c/i2c2clos.o ${OBJECTDIR}/fcts/i2c/i2c2dtrd.o ${OBJECTDIR}/fcts/i2c/i2c2eeap.o ${OBJECTDIR}/fcts/i2c/i2c2eebw.o ${OBJECTDIR}/fcts/i2c/i2c2eecr.o ${OBJECTDIR}/fcts/i2c/i2c2eepw.o ${OBJECTDIR}/fcts/i2c/i2c2eerr.o ${OBJECTDIR}/fcts/i2c/i2c2eesr.o ${OBJECTDIR}/fcts/i2c/i2c2gets.o ${OBJECTDIR}/fcts/i2c/i2c2idle.o ${OBJECTDIR}/fcts/i2c/i2c2nack.o ${OBJECTDIR}/fcts/i2c/i2c2open.o ${OBJECTDIR}/fcts/i2c/i2c2puts.o ${OBJECTDIR}/fcts/i2c/i2c2read.o ${OBJECTDIR}/fcts/i2c/i2c2rstr.o ${OBJECTDIR}/fcts/i2c/i2c2stop.o ${OBJECTDIR}/fcts/i2c/i2c2strt.o ${OBJECTDIR}/fcts/i2c/i2c2writ.o ${OBJECTDIR}/fcts/LCD/busyxlcd.o ${OBJECTDIR}/fcts/LCD/openxlcd.o ${OBJECTDIR}/fcts/LCD/putrxlcd.o ${OBJECTDIR}/fcts/LCD/putsxlcd.o ${OBJECTDIR}/fcts/LCD/readaddr.o ${OBJECTDIR}/fcts/LCD/readdata.o ${OBJECTDIR}/fcts/LCD/setcgram.o ${OBJECTDIR}/fcts/LCD/setddram.o ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o ${OBJECTDIR}/fcts/LCD/writdata.o ${OBJECTDIR}/fcts/LCD/writeOnLCD.o ${OBJECTDIR}/fcts/LCD/delaysXLCD.o ${OBJECTDIR}/fcts/OS/hardware.o ${OBJECTDIR}/fcts/OS/My_TIMERS.o ${OBJECTDIR}/TIOS.o ${OBJECTDIR}/fcts/Temperature/1wire.o ${OBJECTDIR}/fcts/Temperature/ftoa.o ${OBJECTDIR}/Main.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/ARP.o.d ${OBJECTDIR}/Announce.o.d ${OBJECTDIR}/DNS.o.d ${OBJECTDIR}/ENC28J60.o.d ${OBJECTDIR}/Helpers.o.d ${OBJECTDIR}/ICMP.o.d ${OBJECTDIR}/IP.o.d ${OBJECTDIR}/PICDelay.o.d ${OBJECTDIR}/StackTsk.o.d ${OBJECTDIR}/TCP.o.d ${OBJECTDIR}/TCPPerformanceTest.o.d ${OBJECTDIR}/Tick.o.d ${OBJECTDIR}/UDP.o.d ${OBJECTDIR}/UDPPerformanceTest.o.d ${OBJECTDIR}/fcts/i2c/i2c2ack.o.d ${OBJECTDIR}/fcts/i2c/i2c2clos.o.d ${OBJECTDIR}/fcts/i2c/i2c2dtrd.o.d ${OBJECTDIR}/fcts/i2c/i2c2eeap.o.d ${OBJECTDIR}/fcts/i2c/i2c2eebw.o.d ${OBJECTDIR}/fcts/i2c/i2c2eecr.o.d ${OBJECTDIR}/fcts/i2c/i2c2eepw.o.d ${OBJECTDIR}/fcts/i2c/i2c2eerr.o.d ${OBJECTDIR}/fcts/i2c/i2c2eesr.o.d ${OBJECTDIR}/fcts/i2c/i2c2gets.o.d ${OBJECTDIR}/fcts/i2c/i2c2idle.o.d ${OBJECTDIR}/fcts/i2c/i2c2nack.o.d ${OBJECTDIR}/fcts/i2c/i2c2open.o.d ${OBJECTDIR}/fcts/i2c/i2c2puts.o.d ${OBJECTDIR}/fcts/i2c/i2c2read.o.d ${OBJECTDIR}/fcts/i2c/i2c2rstr.o.d ${OBJECTDIR}/fcts/i2c/i2c2stop.o.d ${OBJECTDIR}/fcts/i2c/i2c2strt.o.d ${OBJECTDIR}/fcts/i2c/i2c2writ.o.d ${OBJECTDIR}/fcts/LCD/busyxlcd.o.d ${OBJECTDIR}/fcts/LCD/openxlcd.o.d ${OBJECTDIR}/fcts/LCD/putrxlcd.o.d ${OBJECTDIR}/fcts/LCD/putsxlcd.o.d ${OBJECTDIR}/fcts/LCD/readaddr.o.d ${OBJECTDIR}/fcts/LCD/readdata.o.d ${OBJECTDIR}/fcts/LCD/setcgram.o.d ${OBJECTDIR}/fcts/LCD/setddram.o.d ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d ${OBJECTDIR}/fcts/LCD/writdata.o.d ${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d ${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d ${OBJECTDIR}/fcts/OS/hardware.o.d ${OBJECTDIR}/fcts/OS/My_TIMERS.o.d ${OBJECTDIR}/TIOS.o.d ${OBJECTDIR}/fcts/Temperature/1wire.o.d ${OBJECTDIR}/fcts/Temperature/ftoa.o.d ${OBJECTDIR}/Main.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/ARP.o ${OBJECTDIR}/Announce.o ${OBJECTDIR}/DNS.o ${OBJECTDIR}/ENC28J60.o ${OBJECTDIR}/Helpers.o ${OBJECTDIR}/ICMP.o ${OBJECTDIR}/IP.o ${OBJECTDIR}/PICDelay.o ${OBJECTDIR}/StackTsk.o ${OBJECTDIR}/TCP.o ${OBJECTDIR}/TCPPerformanceTest.o ${OBJECTDIR}/Tick.o ${OBJECTDIR}/UDP.o ${OBJECTDIR}/UDPPerformanceTest.o ${OBJECTDIR}/fcts/LCD/busyxlcd.o ${OBJECTDIR}/fcts/LCD/openxlcd.o ${OBJECTDIR}/fcts/LCD/putrxlcd.o ${OBJECTDIR}/fcts/LCD/putsxlcd.o ${OBJECTDIR}/fcts/LCD/readaddr.o ${OBJECTDIR}/fcts/LCD/readdata.o ${OBJECTDIR}/fcts/LCD/setcgram.o ${OBJECTDIR}/fcts/LCD/setddram.o ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o ${OBJECTDIR}/fcts/LCD/writdata.o ${OBJECTDIR}/fcts/LCD/writeOnLCD.o ${OBJECTDIR}/fcts/LCD/delaysXLCD.o ${OBJECTDIR}/fcts/OS/hardware.o ${OBJECTDIR}/fcts/OS/My_TIMERS.o ${OBJECTDIR}/TIOS.o ${OBJECTDIR}/fcts/Temperature/1wire.o ${OBJECTDIR}/fcts/Temperature/ftoa.o ${OBJECTDIR}/Main.o ${OBJECTDIR}/fcts/i2c/i2c2ack.o ${OBJECTDIR}/fcts/i2c/i2c2clos.o ${OBJECTDIR}/fcts/i2c/i2c2dtrd.o ${OBJECTDIR}/fcts/i2c/i2c2eeap.o ${OBJECTDIR}/fcts/i2c/i2c2eebw.o ${OBJECTDIR}/fcts/i2c/i2c2eecr.o ${OBJECTDIR}/fcts/i2c/i2c2eepw.o ${OBJECTDIR}/fcts/i2c/i2c2eerr.o ${OBJECTDIR}/fcts/i2c/i2c2eesr.o ${OBJECTDIR}/fcts/i2c/i2c2gets.o ${OBJECTDIR}/fcts/i2c/i2c2idle.o ${OBJECTDIR}/fcts/i2c/i2c2nack.o ${OBJECTDIR}/fcts/i2c/i2c2open.o ${OBJECTDIR}/fcts/i2c/i2c2puts.o ${OBJECTDIR}/fcts/i2c/i2c2read.o ${OBJECTDIR}/fcts/i2c/i2c2rstr.o ${OBJECTDIR}/fcts/i2c/i2c2stop.o ${OBJECTDIR}/fcts/i2c/i2c2strt.o ${OBJECTDIR}/fcts/i2c/i2c2writ.o
+OBJECTFILES=${OBJECTDIR}/ARP.o ${OBJECTDIR}/Announce.o ${OBJECTDIR}/DNS.o ${OBJECTDIR}/ENC28J60.o ${OBJECTDIR}/Helpers.o ${OBJECTDIR}/ICMP.o ${OBJECTDIR}/IP.o ${OBJECTDIR}/PICDelay.o ${OBJECTDIR}/StackTsk.o ${OBJECTDIR}/TCP.o ${OBJECTDIR}/TCPPerformanceTest.o ${OBJECTDIR}/Tick.o ${OBJECTDIR}/UDP.o ${OBJECTDIR}/UDPPerformanceTest.o ${OBJECTDIR}/fcts/i2c/i2c2ack.o ${OBJECTDIR}/fcts/i2c/i2c2clos.o ${OBJECTDIR}/fcts/i2c/i2c2dtrd.o ${OBJECTDIR}/fcts/i2c/i2c2eeap.o ${OBJECTDIR}/fcts/i2c/i2c2eebw.o ${OBJECTDIR}/fcts/i2c/i2c2eecr.o ${OBJECTDIR}/fcts/i2c/i2c2eepw.o ${OBJECTDIR}/fcts/i2c/i2c2eerr.o ${OBJECTDIR}/fcts/i2c/i2c2eesr.o ${OBJECTDIR}/fcts/i2c/i2c2gets.o ${OBJECTDIR}/fcts/i2c/i2c2idle.o ${OBJECTDIR}/fcts/i2c/i2c2nack.o ${OBJECTDIR}/fcts/i2c/i2c2open.o ${OBJECTDIR}/fcts/i2c/i2c2puts.o ${OBJECTDIR}/fcts/i2c/i2c2read.o ${OBJECTDIR}/fcts/i2c/i2c2rstr.o ${OBJECTDIR}/fcts/i2c/i2c2stop.o ${OBJECTDIR}/fcts/i2c/i2c2strt.o ${OBJECTDIR}/fcts/i2c/i2c2writ.o ${OBJECTDIR}/fcts/LCD/busyxlcd.o ${OBJECTDIR}/fcts/LCD/openxlcd.o ${OBJECTDIR}/fcts/LCD/putrxlcd.o ${OBJECTDIR}/fcts/LCD/putsxlcd.o ${OBJECTDIR}/fcts/LCD/readaddr.o ${OBJECTDIR}/fcts/LCD/readdata.o ${OBJECTDIR}/fcts/LCD/setcgram.o ${OBJECTDIR}/fcts/LCD/setddram.o ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o ${OBJECTDIR}/fcts/LCD/writdata.o ${OBJECTDIR}/fcts/LCD/writeOnLCD.o ${OBJECTDIR}/fcts/LCD/delaysXLCD.o ${OBJECTDIR}/fcts/OS/hardware.o ${OBJECTDIR}/fcts/OS/My_TIMERS.o ${OBJECTDIR}/TIOS.o ${OBJECTDIR}/fcts/Temperature/1wire.o ${OBJECTDIR}/fcts/Temperature/ftoa.o ${OBJECTDIR}/Main.o
 
 # Source Files
-SOURCEFILES=ARP.c Announce.c DNS.c ENC28J60.c Helpers.c ICMP.c IP.c PICDelay.c StackTsk.c TCP.c TCPPerformanceTest.c Tick.c UDP.c UDPPerformanceTest.c fcts/LCD/busyxlcd.c fcts/LCD/openxlcd.c fcts/LCD/putrxlcd.c fcts/LCD/putsxlcd.c fcts/LCD/readaddr.c fcts/LCD/readdata.c fcts/LCD/setcgram.c fcts/LCD/setddram.c fcts/LCD/wcmdxlcd.c fcts/LCD/writdata.c fcts/LCD/writeOnLCD.c fcts/LCD/delaysXLCD.c fcts/OS/hardware.c fcts/OS/My_TIMERS.c TIOS.c fcts/Temperature/1wire.c fcts/Temperature/ftoa.c Main.c fcts/i2c/i2c2ack.c fcts/i2c/i2c2clos.c fcts/i2c/i2c2dtrd.c fcts/i2c/i2c2eeap.c fcts/i2c/i2c2eebw.c fcts/i2c/i2c2eecr.c fcts/i2c/i2c2eepw.c fcts/i2c/i2c2eerr.c fcts/i2c/i2c2eesr.c fcts/i2c/i2c2gets.c fcts/i2c/i2c2idle.c fcts/i2c/i2c2nack.c fcts/i2c/i2c2open.c fcts/i2c/i2c2puts.c fcts/i2c/i2c2read.c fcts/i2c/i2c2rstr.c fcts/i2c/i2c2stop.c fcts/i2c/i2c2strt.c fcts/i2c/i2c2writ.c
+SOURCEFILES=ARP.c Announce.c DNS.c ENC28J60.c Helpers.c ICMP.c IP.c PICDelay.c StackTsk.c TCP.c TCPPerformanceTest.c Tick.c UDP.c UDPPerformanceTest.c fcts/i2c/i2c2ack.c fcts/i2c/i2c2clos.c fcts/i2c/i2c2dtrd.c fcts/i2c/i2c2eeap.c fcts/i2c/i2c2eebw.c fcts/i2c/i2c2eecr.c fcts/i2c/i2c2eepw.c fcts/i2c/i2c2eerr.c fcts/i2c/i2c2eesr.c fcts/i2c/i2c2gets.c fcts/i2c/i2c2idle.c fcts/i2c/i2c2nack.c fcts/i2c/i2c2open.c fcts/i2c/i2c2puts.c fcts/i2c/i2c2read.c fcts/i2c/i2c2rstr.c fcts/i2c/i2c2stop.c fcts/i2c/i2c2strt.c fcts/i2c/i2c2writ.c fcts/LCD/busyxlcd.c fcts/LCD/openxlcd.c fcts/LCD/putrxlcd.c fcts/LCD/putsxlcd.c fcts/LCD/readaddr.c fcts/LCD/readdata.c fcts/LCD/setcgram.c fcts/LCD/setddram.c fcts/LCD/wcmdxlcd.c fcts/LCD/writdata.c fcts/LCD/writeOnLCD.c fcts/LCD/delaysXLCD.c fcts/OS/hardware.c fcts/OS/My_TIMERS.c TIOS.c fcts/Temperature/1wire.c fcts/Temperature/ftoa.c Main.c
 
 
 CFLAGS=
@@ -200,150 +200,6 @@ ${OBJECTDIR}/UDPPerformanceTest.o: UDPPerformanceTest.c  nbproject/Makefile-${CN
 	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/UDPPerformanceTest.o   UDPPerformanceTest.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/UDPPerformanceTest.o 
 	@${FIXDEPS} "${OBJECTDIR}/UDPPerformanceTest.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/busyxlcd.o: fcts/LCD/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/busyxlcd.o   fcts/LCD/busyxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/busyxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/openxlcd.o: fcts/LCD/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/openxlcd.o   fcts/LCD/openxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/openxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/openxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/putrxlcd.o: fcts/LCD/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putrxlcd.o   fcts/LCD/putrxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putrxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/putsxlcd.o: fcts/LCD/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putsxlcd.o   fcts/LCD/putsxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putsxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/readaddr.o: fcts/LCD/readaddr.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readaddr.o   fcts/LCD/readaddr.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readaddr.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readaddr.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/readdata.o: fcts/LCD/readdata.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readdata.o   fcts/LCD/readdata.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readdata.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/setcgram.o: fcts/LCD/setcgram.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setcgram.o   fcts/LCD/setcgram.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setcgram.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setcgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/setddram.o: fcts/LCD/setddram.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setddram.o   fcts/LCD/setddram.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setddram.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setddram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/wcmdxlcd.o: fcts/LCD/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o   fcts/LCD/wcmdxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/writdata.o: fcts/LCD/writdata.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writdata.o   fcts/LCD/writdata.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writdata.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/writeOnLCD.o: fcts/LCD/writeOnLCD.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writeOnLCD.o   fcts/LCD/writeOnLCD.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/delaysXLCD.o: fcts/LCD/delaysXLCD.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/delaysXLCD.o   fcts/LCD/delaysXLCD.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/OS/hardware.o: fcts/OS/hardware.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/OS 
-	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o.d 
-	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/hardware.o   fcts/OS/hardware.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/hardware.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/hardware.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/OS/My_TIMERS.o: fcts/OS/My_TIMERS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/OS 
-	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o.d 
-	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/My_TIMERS.o   fcts/OS/My_TIMERS.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/My_TIMERS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/TIOS.o: TIOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/TIOS.o.d 
-	@${RM} ${OBJECTDIR}/TIOS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/TIOS.o   TIOS.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/TIOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/TIOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/Temperature/1wire.o: fcts/Temperature/1wire.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o.d 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/1wire.o   fcts/Temperature/1wire.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/1wire.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/1wire.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/Temperature/ftoa.o: fcts/Temperature/ftoa.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o.d 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/ftoa.o   fcts/Temperature/ftoa.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/ftoa.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/ftoa.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/Main.o: Main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/Main.o.d 
-	@${RM} ${OBJECTDIR}/Main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/Main.o   Main.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/Main.o 
-	@${FIXDEPS} "${OBJECTDIR}/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 ${OBJECTDIR}/fcts/i2c/i2c2ack.o: fcts/i2c/i2c2ack.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/fcts/i2c 
@@ -497,6 +353,150 @@ ${OBJECTDIR}/fcts/i2c/i2c2writ.o: fcts/i2c/i2c2writ.c  nbproject/Makefile-${CND_
 	@${DEP_GEN} -d ${OBJECTDIR}/fcts/i2c/i2c2writ.o 
 	@${FIXDEPS} "${OBJECTDIR}/fcts/i2c/i2c2writ.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
+${OBJECTDIR}/fcts/LCD/busyxlcd.o: fcts/LCD/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/busyxlcd.o   fcts/LCD/busyxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/busyxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/openxlcd.o: fcts/LCD/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/openxlcd.o   fcts/LCD/openxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/openxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/openxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/putrxlcd.o: fcts/LCD/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putrxlcd.o   fcts/LCD/putrxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putrxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/putsxlcd.o: fcts/LCD/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putsxlcd.o   fcts/LCD/putsxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putsxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/readaddr.o: fcts/LCD/readaddr.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readaddr.o   fcts/LCD/readaddr.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readaddr.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readaddr.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/readdata.o: fcts/LCD/readdata.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readdata.o   fcts/LCD/readdata.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readdata.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/setcgram.o: fcts/LCD/setcgram.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setcgram.o   fcts/LCD/setcgram.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setcgram.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setcgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/setddram.o: fcts/LCD/setddram.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setddram.o   fcts/LCD/setddram.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setddram.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setddram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/wcmdxlcd.o: fcts/LCD/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o   fcts/LCD/wcmdxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/writdata.o: fcts/LCD/writdata.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writdata.o   fcts/LCD/writdata.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writdata.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/writeOnLCD.o: fcts/LCD/writeOnLCD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writeOnLCD.o   fcts/LCD/writeOnLCD.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/delaysXLCD.o: fcts/LCD/delaysXLCD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/delaysXLCD.o   fcts/LCD/delaysXLCD.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/OS/hardware.o: fcts/OS/hardware.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/OS 
+	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o.d 
+	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/hardware.o   fcts/OS/hardware.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/hardware.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/hardware.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/OS/My_TIMERS.o: fcts/OS/My_TIMERS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/OS 
+	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o.d 
+	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/My_TIMERS.o   fcts/OS/My_TIMERS.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/My_TIMERS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/TIOS.o: TIOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/TIOS.o.d 
+	@${RM} ${OBJECTDIR}/TIOS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/TIOS.o   TIOS.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/TIOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/TIOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/Temperature/1wire.o: fcts/Temperature/1wire.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o.d 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/1wire.o   fcts/Temperature/1wire.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/1wire.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/1wire.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/Temperature/ftoa.o: fcts/Temperature/ftoa.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o.d 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/ftoa.o   fcts/Temperature/ftoa.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/ftoa.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/ftoa.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/Main.o: Main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/Main.o.d 
+	@${RM} ${OBJECTDIR}/Main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/Main.o   Main.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/Main.o 
+	@${FIXDEPS} "${OBJECTDIR}/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
 else
 ${OBJECTDIR}/ARP.o: ARP.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR} 
@@ -609,150 +609,6 @@ ${OBJECTDIR}/UDPPerformanceTest.o: UDPPerformanceTest.c  nbproject/Makefile-${CN
 	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/UDPPerformanceTest.o   UDPPerformanceTest.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/UDPPerformanceTest.o 
 	@${FIXDEPS} "${OBJECTDIR}/UDPPerformanceTest.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/busyxlcd.o: fcts/LCD/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/busyxlcd.o   fcts/LCD/busyxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/busyxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/openxlcd.o: fcts/LCD/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/openxlcd.o   fcts/LCD/openxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/openxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/openxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/putrxlcd.o: fcts/LCD/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putrxlcd.o   fcts/LCD/putrxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putrxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/putsxlcd.o: fcts/LCD/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putsxlcd.o   fcts/LCD/putsxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putsxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/readaddr.o: fcts/LCD/readaddr.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readaddr.o   fcts/LCD/readaddr.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readaddr.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readaddr.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/readdata.o: fcts/LCD/readdata.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readdata.o   fcts/LCD/readdata.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readdata.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/setcgram.o: fcts/LCD/setcgram.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setcgram.o   fcts/LCD/setcgram.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setcgram.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setcgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/setddram.o: fcts/LCD/setddram.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setddram.o   fcts/LCD/setddram.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setddram.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setddram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/wcmdxlcd.o: fcts/LCD/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o   fcts/LCD/wcmdxlcd.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/writdata.o: fcts/LCD/writdata.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writdata.o   fcts/LCD/writdata.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writdata.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/writeOnLCD.o: fcts/LCD/writeOnLCD.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writeOnLCD.o   fcts/LCD/writeOnLCD.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/LCD/delaysXLCD.o: fcts/LCD/delaysXLCD.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
-	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d 
-	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/delaysXLCD.o   fcts/LCD/delaysXLCD.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/OS/hardware.o: fcts/OS/hardware.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/OS 
-	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o.d 
-	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/hardware.o   fcts/OS/hardware.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/hardware.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/hardware.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/OS/My_TIMERS.o: fcts/OS/My_TIMERS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/OS 
-	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o.d 
-	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/My_TIMERS.o   fcts/OS/My_TIMERS.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/My_TIMERS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/TIOS.o: TIOS.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/TIOS.o.d 
-	@${RM} ${OBJECTDIR}/TIOS.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/TIOS.o   TIOS.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/TIOS.o 
-	@${FIXDEPS} "${OBJECTDIR}/TIOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/Temperature/1wire.o: fcts/Temperature/1wire.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o.d 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/1wire.o   fcts/Temperature/1wire.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/1wire.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/1wire.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/fcts/Temperature/ftoa.o: fcts/Temperature/ftoa.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o.d 
-	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/ftoa.o   fcts/Temperature/ftoa.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/ftoa.o 
-	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/ftoa.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
-	
-${OBJECTDIR}/Main.o: Main.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} ${OBJECTDIR} 
-	@${RM} ${OBJECTDIR}/Main.o.d 
-	@${RM} ${OBJECTDIR}/Main.o 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/Main.o   Main.c 
-	@${DEP_GEN} -d ${OBJECTDIR}/Main.o 
-	@${FIXDEPS} "${OBJECTDIR}/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 ${OBJECTDIR}/fcts/i2c/i2c2ack.o: fcts/i2c/i2c2ack.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} ${OBJECTDIR}/fcts/i2c 
@@ -905,6 +761,150 @@ ${OBJECTDIR}/fcts/i2c/i2c2writ.o: fcts/i2c/i2c2writ.c  nbproject/Makefile-${CND_
 	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/i2c/i2c2writ.o   fcts/i2c/i2c2writ.c 
 	@${DEP_GEN} -d ${OBJECTDIR}/fcts/i2c/i2c2writ.o 
 	@${FIXDEPS} "${OBJECTDIR}/fcts/i2c/i2c2writ.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/busyxlcd.o: fcts/LCD/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/busyxlcd.o   fcts/LCD/busyxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/busyxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/busyxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/openxlcd.o: fcts/LCD/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/openxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/openxlcd.o   fcts/LCD/openxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/openxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/openxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/putrxlcd.o: fcts/LCD/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putrxlcd.o   fcts/LCD/putrxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putrxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putrxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/putsxlcd.o: fcts/LCD/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/putsxlcd.o   fcts/LCD/putsxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/putsxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/putsxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/readaddr.o: fcts/LCD/readaddr.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readaddr.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readaddr.o   fcts/LCD/readaddr.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readaddr.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readaddr.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/readdata.o: fcts/LCD/readdata.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/readdata.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/readdata.o   fcts/LCD/readdata.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/readdata.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/readdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/setcgram.o: fcts/LCD/setcgram.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setcgram.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setcgram.o   fcts/LCD/setcgram.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setcgram.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setcgram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/setddram.o: fcts/LCD/setddram.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/setddram.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/setddram.o   fcts/LCD/setddram.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/setddram.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/setddram.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/wcmdxlcd.o: fcts/LCD/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o   fcts/LCD/wcmdxlcd.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/wcmdxlcd.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/wcmdxlcd.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/writdata.o: fcts/LCD/writdata.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writdata.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writdata.o   fcts/LCD/writdata.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writdata.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writdata.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/writeOnLCD.o: fcts/LCD/writeOnLCD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/writeOnLCD.o   fcts/LCD/writeOnLCD.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/writeOnLCD.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/writeOnLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/LCD/delaysXLCD.o: fcts/LCD/delaysXLCD.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/LCD 
+	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d 
+	@${RM} ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/LCD/delaysXLCD.o   fcts/LCD/delaysXLCD.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/LCD/delaysXLCD.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/LCD/delaysXLCD.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/OS/hardware.o: fcts/OS/hardware.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/OS 
+	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o.d 
+	@${RM} ${OBJECTDIR}/fcts/OS/hardware.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/hardware.o   fcts/OS/hardware.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/hardware.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/hardware.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/OS/My_TIMERS.o: fcts/OS/My_TIMERS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/OS 
+	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o.d 
+	@${RM} ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/OS/My_TIMERS.o   fcts/OS/My_TIMERS.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/OS/My_TIMERS.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/OS/My_TIMERS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/TIOS.o: TIOS.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/TIOS.o.d 
+	@${RM} ${OBJECTDIR}/TIOS.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/TIOS.o   TIOS.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/TIOS.o 
+	@${FIXDEPS} "${OBJECTDIR}/TIOS.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/Temperature/1wire.o: fcts/Temperature/1wire.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o.d 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/1wire.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/1wire.o   fcts/Temperature/1wire.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/1wire.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/1wire.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/fcts/Temperature/ftoa.o: fcts/Temperature/ftoa.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR}/fcts/Temperature 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o.d 
+	@${RM} ${OBJECTDIR}/fcts/Temperature/ftoa.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/fcts/Temperature/ftoa.o   fcts/Temperature/ftoa.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/fcts/Temperature/ftoa.o 
+	@${FIXDEPS} "${OBJECTDIR}/fcts/Temperature/ftoa.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
+	
+${OBJECTDIR}/Main.o: Main.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} ${OBJECTDIR} 
+	@${RM} ${OBJECTDIR}/Main.o.d 
+	@${RM} ${OBJECTDIR}/Main.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -p$(MP_PROCESSOR_OPTION) -I"TCPIP Stack" -ms -oa-  -I ${MP_CC_DIR}\\..\\h  -fo ${OBJECTDIR}/Main.o   Main.c 
+	@${DEP_GEN} -d ${OBJECTDIR}/Main.o 
+	@${FIXDEPS} "${OBJECTDIR}/Main.o.d" $(SILENT) -rsi ${MP_CC_DIR}../ -c18 
 	
 endif
 

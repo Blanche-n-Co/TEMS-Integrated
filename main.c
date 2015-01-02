@@ -341,9 +341,17 @@ void EthernetSocketInit(void){
     StackTask();
     StackApplications();
 
-    //client = émet
-    sendSocket = TCPOpen((DWORD)(PTR_BASE)"10.10.10.3",
-                         TCP_OPEN_IP_ADDRESS, EthernetPort, TCP_PURPOSE_DEFAULT);
+    //Socket Client (émet)
+//    sendSocket = TCPOpen((DWORD)0x030A0A0A,
+//                    TCP_OPEN_IP_ADDRESS,
+//                    EthernetPort,
+//                    TCP_PURPOSE_DEFAULT);
+
+    //Socket Serveur (reçoit)
+    sendSocket = TCPOpen(0,
+                    TCP_OPEN_SERVER,
+                    EthernetPort,
+                    TCP_PURPOSE_DEFAULT);
 
     while(BusyXLCD());
     if(sendSocket == INVALID_SOCKET)
@@ -395,6 +403,11 @@ void EthernetSocketRX(void)
                     LED = 1;
                 }
             }
+            StackTask();
+            StackApplications();
+
+            for(i=0 ; i<=MaxLenghtRX ; i++)     // Remise à zéro du tableau des données
+                DonneRecue[i]=0;
         }
     }
 }
