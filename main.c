@@ -44,13 +44,13 @@
 // =======================================================================
 //   Variables globales
 // =======================================================================
-unsigned char IDCB_LED  = 0;            // ID de la callback "LedModeBlink"
+char StateUp                = ZERO;
+unsigned char IDCB_LED      = 0;            // ID de la callback "LedModeBlink"
+unsigned char IDCB_EthSoTX  = 0;            // ID de la callback "EthernetSocketTX"
 
 
 /* TEMPERATURE */
-float TemperatureCur    =   0;             // Variable pour la température CURRENT
-float TemperatureMax    = -50;             // Variable pour la température MAXIMUM
-float TemperatureMin    = 100;             // Variable pour la température MINIMUM
+float TempProbeValues[] = {0,-50,100};      // Température CURRENT(0), MAXIMUM(1), MINIMUM(2)
 
 
 /* REAL TIME CLOCK */
@@ -96,8 +96,8 @@ void ClockShow(void);                   // Affichage de l'horloge
 void BCD2ASC(unsigned char, char*);     // Conversion BCD vers ASCII
 
 void EthernetSocketInit(void);          // Initialisation d'un socket (module Ethernet)
-void EthernetSocketTX(void);            // Fonction d'envoie par Ethernet
 void EthernetSocketRX(void);            // Fonction de réception par Ethernet
+void EthernetSocketTX(void);            // Fonction d'envoie par Ethernet
 static void InitAppConfig(void);        // Fonction requise à la pile TCP/IP
 static void DisplayIPValue(IP_ADDR);    // Affichage adresse IP initialisée
 
@@ -153,8 +153,10 @@ void main(void){
     **************************************/
     TIOSEnregistrerCB_Button(ButtonsManagement);
     TIOSEnregistrerCB_TIMER(TemperatureProbe, 1000);
-    TIOSEnregistrerCB_TIMER(EthernetSocketRX,  500);
-    TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
+    
+    TIOSEnregistrerCB_TIMER(EthernetSocketRX, 50);
+    IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
+
 
 
     /*************************************
@@ -174,31 +176,40 @@ void LedModeBlink(void){
 void ButtonsManagement(volatile unsigned char *ptr_Button){
     switch (*ptr_Button){
         case UP :
-                ClockRead();
-                ClockShow();
+            if (StateUp == ZERO){
+                TIOSRetirerCB_TIMER(IDCB_EthSoTX);
+                StateUp = ONE;
+            }else
+                if (StateUp == ONE){
+                    IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
+                    StateUp = ZERO;
+                }
             break;
             
 	case DOWN :
-                IDCB_LED = TIOSEnregistrerCB_TIMER(LedModeBlink, 50);
+            IDCB_LED = TIOSEnregistrerCB_TIMER(LedModeBlink, 50);
             break;
 
 	case CENTER :
-                writeOnLCDS(FLUSH,   0x00, "     T E M S    ");
-                writeOnLCDS(NOFLUSH, 0x40, "Choose an option");
+            //LUMINOSITY
+            writeOnLCDS(FLUSH,   0x00, "     T E M S    ");
+            writeOnLCDS(NOFLUSH, 0x40, "Choose an option");
             break;
 
         case RIGHT :
-                writeOnLCDS(FLUSH,   0x00, "Temperature:");
-                writeOnLCDF(NOFLUSH, AFTER, TemperatureCur, 1);
-                
-                prepareLCD(NOFLUSH,  0x40);
-                writeOnLCDS(NOFLUSH, AFTER,"MIN:");
-                writeOnLCDF(NOFLUSH, AFTER, TemperatureMin, 1);
-                writeOnLCDS(NOFLUSH, AFTER,"MAX:");
-                writeOnLCDF(NOFLUSH, AFTER, TemperatureMax, 1);
+            writeOnLCDS(FLUSH,   0x00, "Temperature:");
+            writeOnLCDF(NOFLUSH, AFTER, TempProbeValues[0], 1);
+
+            prepareLCD(NOFLUSH,  0x40);
+            writeOnLCDS(NOFLUSH, AFTER,"MAX:");
+            writeOnLCDF(NOFLUSH, AFTER, TempProbeValues[1], 1);
+            writeOnLCDS(NOFLUSH, AFTER,"MIN:");
+            writeOnLCDF(NOFLUSH, AFTER, TempProbeValues[2], 1);
             break;
 
 	case LEFT :
+            ClockRead();
+            ClockShow();
             break;
     }
 }
@@ -209,19 +220,19 @@ void ButtonsManagement(volatile unsigned char *ptr_Button){
 // =======================================================================
 void TemperatureProbe(void){
     INTCONbits.GIE = 0;
-    TemperatureCur = Read_Temperature();
+    TempProbeValues[0] = Read_Temperature();
     INTCONbits.GIE = 1;
 
-    if (TemperatureCur < TemperatureMin)
-        TemperatureMin = TemperatureCur;
+    if (TempProbeValues[0] < TempProbeValues[2])
+        TempProbeValues[2] = TempProbeValues[0];
 
-    if (TemperatureCur > TemperatureMax)
-        TemperatureMax = TemperatureCur;
+    if (TempProbeValues[0] > TempProbeValues[1])
+        TempProbeValues[1] = TempProbeValues[0];
 
-    if (TemperatureCur > TEMPERATURE_MAX){
+    if (TempProbeValues[0] > TEMPERATURE_MAX){
         //ACTION MODULE GSM
     }
-    if (TemperatureCur < TEMPERATURE_MIN){
+    if (TempProbeValues[0] < TEMPERATURE_MIN){
         //ACTION MODULE GSM
     }
     
@@ -260,7 +271,6 @@ void ClockInit(void){
 //   Fonction de lecture de l'heure
 // =======================================================================
 void ClockRead(void){
-    //Number of BYTES to read
     int i = 0;
     int nbBytes = 3;
     unsigned char *ptr = &ClockConvBuffer[0];
@@ -341,12 +351,6 @@ void EthernetSocketInit(void){
     StackTask();
     StackApplications();
 
-    //Socket Client (émet)
-//    sendSocket = TCPOpen((DWORD)0x030A0A0A,
-//                    TCP_OPEN_IP_ADDRESS,
-//                    EthernetPort,
-//                    TCP_PURPOSE_DEFAULT);
-
     //Socket Serveur (reçoit)
     sendSocket = TCPOpen(0,
                     TCP_OPEN_SERVER,
@@ -365,19 +369,22 @@ void EthernetSocketInit(void){
 
 void EthernetSocketTX(void)
 {
+    char j = 0;
     char tmpCUR[6];
-    
-    StackTask();
-    StackApplications();
 
-    if(TCPIsConnected(sendSocket)){
+    for(j=0 ; j<3 ; j++){
+        StackTask();
+        StackApplications();
 
-        ok = TCPIsPutReady(sendSocket);
+        if(TCPIsConnected(sendSocket)){
 
-        if(ok > 0){
-            ftoa(TemperatureCur, tmpCUR, 2, 'F');
-            ok = TCPPutArray(sendSocket,&tmpCUR[0], sizeof(float));
-            TCPFlush(sendSocket);
+            ok = TCPIsPutReady(sendSocket);
+
+            if(ok > 0){
+                ftoa(TempProbeValues[j], tmpCUR, 2, 'F');
+                ok = TCPPutArray(sendSocket,&tmpCUR[0], sizeof(float));
+                TCPFlush(sendSocket);
+            }
         }
     }
 }
@@ -399,15 +406,24 @@ void EthernetSocketRX(void)
 
             if(DonneRecue[0] == 35)           // Commandes: 35 = #
             {
-                if(strcmppgm2ram(DonneRecue,"#LED") == 0){
-                    LED = 1;
-                }
-            }
-            StackTask();
-            StackApplications();
+                //DoorOpened=DO / DoorClosed= DC
+                if(strcmppgm2ram(DonneRecue,"#DO") == 0){
+                    RELAIS = 1;}
+                if(strcmppgm2ram(DonneRecue,"#DC") == 0){
+                    RELAIS = 0;}
 
-            for(i=0 ; i<=MaxLenghtRX ; i++)     // Remise à zéro du tableau des données
-                DonneRecue[i]=0;
+//                //NumLockEnabled= NLE / NumLockDisbaled= NLD
+//                if(strcmppgm2ram(DonneRecue,"#NLE") == 0){
+//                    TIOSRetirerCB_Button();}
+//                if(strcmppgm2ram(DonneRecue,"#NLD") == 0){
+//                    TIOSEnregistrerCB_Button(ButtonsManagement);}
+//
+//                //UpdateEnabled=UE / UpdateDisabled= UD
+//                if(strcmppgm2ram(DonneRecue,"#UE") == 0){
+//                    IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);}
+//                if(strcmppgm2ram(DonneRecue,"#UD") == 0){
+//                    TIOSRetirerCB_TIMER(IDCB_EthSoTX);}
+            }
         }
     }
 }
