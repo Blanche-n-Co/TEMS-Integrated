@@ -3,6 +3,7 @@
 // =======================================================================
 #include <p18cxxx.h>
 #include <p18f46k22.h>
+#include <stdlib.h>
 #include <delays.h>
 #include <string.h>
 
@@ -11,6 +12,7 @@
 #include "fcts/LCD/xlcd.h"
 #include "fcts/OS/hardware.h"
 #include "fcts/OS/My_TIMERS.h"
+#include "fcts/USART/My_USART.h"
 #include "fcts/Temperature/ftoa.h"
 
 #include "pconfig.h"
@@ -47,9 +49,8 @@ void atInterruptHight(void){
 // =======================================================================
 //   Déclaration des variables globales
 // =======================================================================
-volatile unsigned char BP_read_state = 0;
-volatile unsigned char CPT_TIMER1 = 0;
-
+volatile unsigned char BP_read_state        = 0;
+volatile unsigned char CPT_TIMER1           = 0;
 
 
 
@@ -67,6 +68,12 @@ volatile unsigned char Button;      // Variable qui indique le nom de la touche 
 char IDCB_ENABLE_INTERRUPT_BP = 0;  // ID de la callback utilisée pour la gestion des rebonds
 void ENABLE_INTERRUPT_BP(void);     // Fonction interne pour la gestion des rebonds
 
+//Variables pour CallBack USART (réception d'un string)
+void(*MaCBUSART1)(char*);               //Pointeur de fonction pour la fonction "void USART1_RX(char *Trame_RS232)" définie dans le main.c
+volatile unsigned char USARTReception;  //Variable qui signale la récepption d'une trame complète
+volatile char bufRS232[MAXBUFRS232];    //Buffer qui contient la trame reçue (tableau de caractères)
+volatile unsigned char idxbufRS232 = 0; //Index du buffer qui contient la trame reçue
+
 
 
 // ****************  TIOSInitialiser ******************************
@@ -82,7 +89,11 @@ void TIOSInitialiser(void)
     }
     
     //Initialisation pour variable Button
-     MaCBButton = 0;
+    MaCBButton = 0;
+
+    //Initialisation pour variables USART
+    MaCBUSART1 = 0;
+    USARTReception = 0;
 } 
 
 
@@ -105,35 +116,43 @@ unsigned char TIOSEnregistrerCB_TIMER(void(*ptFonction)(void), unsigned int tps)
     else return 255;                //Il n'y a plus de place pour enregistrer un callback
 }
 
+// ****************  Retirer fonction de rappel ***************************
+void TIOSRetirerCB_TIMER(unsigned char IDCB){
+    if ((IDCB >=0) && IDCB<MAXCALLBACKCHRONO)  //Libère l'emplacement de la Callabck
+    {
+        MaCB[IDCB] = 0;
+        TempsCB[IDCB] = 0;
+    }
+}
+
 
 
 // ****************  Enregistrer CallBack Button****************************
 // Sauve l'adresse de la fonction à rappeler
 // *************************************************************************
-void TIOSEnregistrerCB_Button(void(*ptFonction)(char*))
-{
+void TIOSEnregistrerCB_Button(void(*ptFonction)(char*)){
     //Sauver l'adresse de la fonction pour rappel
     MaCBButton = ptFonction;
 }
 
 // ****************  Retirer fonction de rappel Button**********************
-void TIOSRetirerCB_Button(void)
-{
+void TIOSRetirerCB_Button(void){
     MaCBButton = 0;
 }
 
 
 
-// ****************  Retirer fonction de rappel ****************************
-// Libère l'emplacement de la callback
+// ****************  Enregistrer CallBack USART1 ******************************
+// Sauve l'adresse de la fonction à rappeler
 // *************************************************************************
-void TIOSRetirerCB_TIMER(unsigned char IDCB)
-{
-     if ((IDCB >=0) && IDCB<MAXCALLBACKCHRONO)
-     {
-        MaCB[IDCB] = 0;
-        TempsCB[IDCB] = 0;
-     }
+void TIOSEnregistrerCB_USART1_RX(void(*ptFonction)(char*)){
+    //Sauver l'adresse de la fonction pour rappel
+    MaCBUSART1 = ptFonction;
+}
+
+// ****************  Retirer fonction de rappel USART1 **********************
+void TIOSRetirerCB_USART1_RX(void){
+    MaCBUSART1 = 0;
 }
 
 
@@ -145,6 +164,7 @@ void TIOSRetirerCB_TIMER(unsigned char IDCB)
 void TIOSStart()
 {
     unsigned char idx;
+//    unsigned char cls;
 
     /*************************************
     *-> Configuration des interruptions
@@ -162,13 +182,12 @@ void TIOSStart()
     INTCON2bits.INTEDG0 = 0;            // Interruption sur flanc descendant activée
 
 
-
+    
     /*************************************
     *-> Configuration de l'ADC
     **************************************/
     ANSELDbits.ANSD4    = 1;
     TRISDbits.TRISD4    = 1;
-
     ADCON0bits.ADON     = 1;
     ADCON0bits.CHS      = 0b11000;
     ADCON1bits.PVCFG    = 0b00;
@@ -198,6 +217,14 @@ void TIOSStart()
         {
             MaCBButton (&Button);
             Button = NONE;
+        }
+
+        if (USARTReception)
+        {
+            USARTReception = 0;
+
+            if (MaCBUSART1)
+                MaCBUSART1(bufRS232);                       //Rappel de la fonction enregistrée!
         }
      }
 }
@@ -232,10 +259,10 @@ void MyInterruptHight(void)
 
         TMR1H = 0xF0;
         TMR1L = 0x60;
-        
+
 	PIR1bits.TMR1IF = 0;
     }
-
+    
     //Flag interruption sur boutons
     if(INTCONbits.INT0IF){
         INT_BP_ANS = ANALOGIC;                                                     // GESTION DES REBONDS
@@ -256,10 +283,28 @@ void MyInterruptHight(void)
         }
         INTCONbits.INT0IF = 0;
     }
+
+    //Flag interruption sur USART1 RX
+    if(PIR1bits.RC1IF){
+        bufRS232[idxbufRS232] = RCREG1;     //Lire le registre de réception, le charger dans le buffer
+        
+        if (bufRS232[idxbufRS232] == '*'){
+            bufRS232[idxbufRS232] = 0;
+            USARTReception =1;
+            idxbufRS232 = 0;
+            USART1_TX('\r');                //Transmettre retour charriot
+            USART1_TX('\n');                //('\r' + '\n' pour Win32 !!!)
+            USART1_TX('>');                 //Transmettre un prompt
+        }
+        else{
+            USART1_TX(bufRS232[idxbufRS232]);   //Transmettre le caractère en retour
+            if (++idxbufRS232 >= MAXBUFRS232)   //Si on arrive au maximum du buffer, remettre à zéro
+                idxbufRS232 = 0;
+        }
+    }
 }
 
-void ENABLE_INTERRUPT_BP(void)
-{
+void ENABLE_INTERRUPT_BP(void){
     //INTCONbits.INT0IE = 1;      // Interruption INT0 activée
     INT_BP_ANS = NUMERIC;
     TIOSRetirerCB_TIMER(IDCB_ENABLE_INTERRUPT_BP);

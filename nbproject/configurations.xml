@@ -49,6 +49,9 @@
         <itemPath>fcts/Temperature/1wire.h</itemPath>
         <itemPath>fcts/Temperature/ftoa.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f7" displayName="USART" projectFiles="true">
+        <itemPath>fcts/USART/My_USART.h</itemPath>
+      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -118,6 +121,9 @@
           <itemPath>fcts/Temperature/1wire.c</itemPath>
           <itemPath>fcts/Temperature/ftoa.c</itemPath>
         </logicalFolder>
+        <logicalFolder name="f6" displayName="USART" projectFiles="true">
+          <itemPath>fcts/USART/My_USART.c</itemPath>
+        </logicalFolder>
       </logicalFolder>
       <itemPath>Main.c</itemPath>
     </logicalFolder>
@@ -133,6 +139,7 @@
     <Elem>fcts/OS</Elem>
     <Elem>fcts/Temperature</Elem>
     <Elem>fcts/i2c</Elem>
+    <Elem>fcts/USART</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

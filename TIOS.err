@@ -1,1 +1,2 @@
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\TIOS.c 199 : suspicious pointer conversion
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\TIOS.c 218 : suspicious pointer conversion
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\TIOS.c 227 : type qualifier mismatch in assignment

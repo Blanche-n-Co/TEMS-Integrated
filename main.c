@@ -13,6 +13,7 @@
 #include "fcts/LCD/xlcd.h"
 #include "fcts/OS/hardware.h"
 #include "fcts/LCD/writeOnLCD.h"
+#include "fcts/USART/My_USART.h"
 #include "fcts/Temperature/ftoa.h"
 #include "fcts/Temperature/1wire.h"
 
@@ -95,6 +96,8 @@ void ClockRead(void);                   // Lecture de l'horloge
 void ClockShow(void);                   // Affichage de l'horloge
 void BCD2ASC(unsigned char, char*);     // Conversion BCD vers ASCII
 
+void USART1_RX(char *);                 // Gestion des trames Usart reçues
+
 void EthernetSocketInit(void);          // Initialisation d'un socket (module Ethernet)
 void EthernetSocketRX(void);            // Fonction de réception par Ethernet
 void EthernetSocketTX(void);            // Fonction d'envoie par Ethernet
@@ -109,6 +112,7 @@ static void DisplayIPValue(IP_ADDR);    // Affichage adresse IP initialisée
 void main(void){
 
     InitHardware();                         // Initialisation des valeurs systèmes
+    USART1_TX_RX_9600();
     TIOSInitialiser();                      // Initialisation de l'OS (appel des Callbacks)
 
 
@@ -153,7 +157,8 @@ void main(void){
     **************************************/
     TIOSEnregistrerCB_Button(ButtonsManagement);
     TIOSEnregistrerCB_TIMER(TemperatureProbe, 1000);
-    
+    TIOSEnregistrerCB_USART1_RX(USART1_RX);
+
     TIOSEnregistrerCB_TIMER(EthernetSocketRX, 50);
     IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
 
@@ -354,6 +359,28 @@ void BCD2ASC(unsigned char src, char *dest){
 
 
 // =======================================================================
+//   Fonction de gestion de réception RX USART1
+// =======================================================================
+void USART1_RX(char *Trame){
+    LED = 1;
+    if ((Trame[0] = '#')){
+        switch (Trame[1]){
+            case 'A' :
+                RELAIS = 1;
+                break;
+
+            case 'B' :
+                RELAIS = 0;
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+
+
+// =======================================================================
 //   Fonctions de gestion de l'ethernet
 // =======================================================================
 void EthernetSocketInit(void){
@@ -380,6 +407,19 @@ void EthernetSocketTX(void)
 {
     char j = 0;
     char tmpCUR[6];
+
+    StackTask();
+    StackApplications();
+
+    if(TCPIsConnected(sendSocket)){
+
+        ok = TCPIsPutReady(sendSocket);
+
+        if(ok > 0){
+            ok = TCPPutArray(sendSocket,AppConfig.NetBIOSName, 16);
+            TCPFlush(sendSocket);
+        }
+    }
 
     for(j=0 ; j<3 ; j++){
         StackTask();
@@ -420,18 +460,6 @@ void EthernetSocketRX(void)
                     RELAIS = 1;}
                 if(strcmppgm2ram(DonneRecue,"#DC") == 0){
                     RELAIS = 0;}
-
-//                //NumLockEnabled= NLE / NumLockDisbaled= NLD
-//                if(strcmppgm2ram(DonneRecue,"#NLE") == 0){
-//                    TIOSRetirerCB_Button();}
-//                if(strcmppgm2ram(DonneRecue,"#NLD") == 0){
-//                    TIOSEnregistrerCB_Button(ButtonsManagement);}
-//
-//                //UpdateEnabled=UE / UpdateDisabled= UD
-//                if(strcmppgm2ram(DonneRecue,"#UE") == 0){
-//                    IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);}
-//                if(strcmppgm2ram(DonneRecue,"#UD") == 0){
-//                    TIOSRetirerCB_TIMER(IDCB_EthSoTX);}
             }
         }
     }

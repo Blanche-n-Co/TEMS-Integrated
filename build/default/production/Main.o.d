@@ -4,6 +4,7 @@ build/default/production/Main.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/i2c/i2c.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/LCD/xlcd.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/LCD/writeOnLCD.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/USART/My_USART.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/Temperature/ftoa.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/Temperature/1wire.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/Helpers.h  \

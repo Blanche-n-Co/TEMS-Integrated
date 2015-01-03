@@ -2,6 +2,7 @@ build/default/production/TIOS.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TIOS.c  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TIOS.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/LCD/xlcd.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/USART/My_USART.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/Temperature/ftoa.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/Helpers.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/Tick.h  \
