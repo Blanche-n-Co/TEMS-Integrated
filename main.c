@@ -54,6 +54,11 @@ unsigned char IDCB_EthSoTX  = 0;            // ID de la callback "EthernetSocket
 float TempProbeValues[] = {0,-50,100};      // Température CURRENT(0), MAXIMUM(1), MINIMUM(2)
 
 
+/* LUMINOSITY */
+float res = 0;                              // Résultat de la conversion ADC
+char  resConv[10];                          // Conversion valeur résultante ADC
+
+
 /* REAL TIME CLOCK */
 unsigned char ClockReadBuffer[]={0,0,0,0,0,0,0,0};//Obligatoire pour faire init
 unsigned char ClockConvBuffer[]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
@@ -134,6 +139,21 @@ void main(void){
     INTCONbits.GIE  = 1;                    // Réactive les interruptons après conversion
 
 
+
+    /*************************************
+    *-> Configuration ADC
+    **************************************/
+    ANSELDbits.ANSD4	= 1;
+    TRISDbits.TRISD4	= 1;
+    ADCON2bits.ADFM	= 1;
+    ADCON1bits.PVCFG	= 0b00;
+    ADCON1bits.NVCFG	= 0b00;
+    ADCON0bits.CHS	= 0b11000;
+    ADCON2bits.ADCS	= 0b101;
+    ADCON0bits.ADON	= 1;
+    ADCON0bits.GO	= 1;
+
+
     /*************************************
     *-> Configuration horloge
     **************************************/
@@ -156,9 +176,10 @@ void main(void){
     *-> Enregistrement des Callbacks
     **************************************/
     TIOSEnregistrerCB_Button(ButtonsManagement);
-    TIOSEnregistrerCB_TIMER(TemperatureProbe, 1000);
     TIOSEnregistrerCB_USART1_RX(USART1_RX);
 
+    TIOSEnregistrerCB_TIMER(LedModeBlink, 50);
+    TIOSEnregistrerCB_TIMER(TemperatureProbe, 1000);
     TIOSEnregistrerCB_TIMER(EthernetSocketRX, 50);
     IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
 
@@ -181,22 +202,30 @@ void LedModeBlink(void){
 void ButtonsManagement(volatile unsigned char *ptr_Button){
     switch (*ptr_Button){
         case UP :
+            writeOnLCDS(FLUSH,   0x00, "     T E M S    ");
             if (StateUp == ZERO){
                 TIOSRetirerCB_TIMER(IDCB_EthSoTX);
+                writeOnLCDS(NOFLUSH, 0x40, "Updates disabled");
                 StateUp = ONE;
             }else
                 if (StateUp == ONE){
                     IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
+                    writeOnLCDS(NOFLUSH, 0x40, "Updates  enabled");
                     StateUp = ZERO;
                 }
             break;
             
 	case DOWN :
-            IDCB_LED = TIOSEnregistrerCB_TIMER(LedModeBlink, 50);
+            writeOnLCDS(FLUSH,0x00, "Luminosity: ");
+            while(ADCON0bits.GO == 1);
+            res = ((float)((ADRESH*256) + ADRESL)/1024)*5;
+            ftoa(res,&resConv[0],2,'f');
+            putsXLCD(resConv);
+            Delay10KTCYx(200);
+            ADCON0bits.GO=1;
             break;
 
 	case CENTER :
-            //LUMINOSITY
             writeOnLCDS(FLUSH,   0x00, "     T E M S    ");
             writeOnLCDS(NOFLUSH, 0x40, "Choose an option");
             break;

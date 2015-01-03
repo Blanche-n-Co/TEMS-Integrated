@@ -1,17 +1,21 @@
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 158 : suspicious pointer conversion
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 200 : type qualifier mismatch in assignment
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 201 : type qualifier mismatch in assignment
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 178 : suspicious pointer conversion
 Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 205 : type qualifier mismatch in assignment
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 209 : type qualifier mismatch in assignment
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 211 : type qualifier mismatch in assignment
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 300 : suspicious pointer conversion
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 319 : type qualifier mismatch in assignment
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 336 : type qualifier mismatch in assignment
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 434 : suspicious pointer conversion
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 459 : suspicious pointer conversion
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 459 : type qualifier mismatch in assignment
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 461 : suspicious pointer conversion
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 461 : type qualifier mismatch in assignment
-Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 483 : suspicious pointer conversion
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 511 : type qualifier mismatch in assignment
-Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 566 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 208 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 213 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 219 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 229 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 230 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 234 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 238 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 240 : type qualifier mismatch in assignment
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 329 : suspicious pointer conversion
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 348 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 365 : type qualifier mismatch in assignment
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 463 : suspicious pointer conversion
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 488 : suspicious pointer conversion
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 488 : type qualifier mismatch in assignment
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 490 : suspicious pointer conversion
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 490 : type qualifier mismatch in assignment
+Warning[2054] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 512 : suspicious pointer conversion
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 540 : type qualifier mismatch in assignment
+Warning[2066] C:\Users\Manager\MPLABXProjects\TEMS-Integrated\Main.c 595 : type qualifier mismatch in assignment
