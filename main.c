@@ -175,7 +175,6 @@ void ButtonsManagement(volatile unsigned char *ptr_Button){
             break;
             
 	case DOWN :
-            AdcConv();
             AdcShow();
             break;
 
