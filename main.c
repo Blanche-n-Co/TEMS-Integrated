@@ -113,6 +113,7 @@ void main(void){
     TemperatureConvert();                   // Lancement première conversion
     AdcInit();                              // Initialisation de l'ADC et valeur de départ
     ClockInit();                            // Initialisation de l'horloge et valeur de départ
+    GsmFunctionInit();                      // Initialisation du GSM et USART2
 
 
 
@@ -135,9 +136,10 @@ void main(void){
     TIOSEnregistrerCB_Button(ButtonsManagement);
     TIOSEnregistrerCB_USART1_RX(USART1_RX);
 
-    TIOSEnregistrerCB_TIMER(LedModeBlink, 50);
-    TIOSEnregistrerCB_TIMER(TemperatureProbe, 1000);
-    TIOSEnregistrerCB_TIMER(EthernetSocketRX, 50);
+    TIOSEnregistrerCB_TIMER(AdcConv,         1000);
+    TIOSEnregistrerCB_TIMER(LedModeBlink,    50);
+    TIOSEnregistrerCB_TIMER(TemperatureProbe,1000);
+    TIOSEnregistrerCB_TIMER(EthernetSocketRX,50);
     IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
 
 
@@ -173,6 +175,7 @@ void ButtonsManagement(volatile unsigned char *ptr_Button){
             break;
             
 	case DOWN :
+            AdcConv();
             AdcShow();
             break;
 
@@ -255,9 +258,7 @@ void EthernetSocketTX(void)
     StackApplications();
 
     if(TCPIsConnected(sendSocket)){
-
         ok = TCPIsPutReady(sendSocket);
-
         if(ok > 0){
             ok = TCPPutArray(sendSocket,AppConfig.NetBIOSName, 16);
             TCPFlush(sendSocket);
@@ -269,14 +270,23 @@ void EthernetSocketTX(void)
         StackApplications();
 
         if(TCPIsConnected(sendSocket)){
-
             ok = TCPIsPutReady(sendSocket);
-
             if(ok > 0){
                 ftoa(TempProbeValues[j], tmpCUR, 2, 'F');
                 ok = TCPPutArray(sendSocket,&tmpCUR[0], sizeof(float));
                 TCPFlush(sendSocket);
             }
+        }
+    }
+    
+    StackTask();
+    StackApplications();
+
+    if(TCPIsConnected(sendSocket)){
+        ok = TCPIsPutReady(sendSocket);
+        if(ok > 0){
+            ok = TCPPutArray(sendSocket,resConv, 10);
+            TCPFlush(sendSocket);
         }
     }
 }

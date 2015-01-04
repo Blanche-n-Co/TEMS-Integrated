@@ -5,8 +5,11 @@
 **                    FUNCTION PROTOTYPES 			 **
 ******************************************************************/
 
-void AdcInit(void);             // Initialisation des registres pour capteur de luminosité + ADC
-void AdcShow(void);             // Affichage de la luminosité
+extern char resConv[10];
+
+void AdcInit(void);     // Initialisation des registres pour capteur de luminosité + ADC
+void AdcConv(void);     // Lance une conversion et alimente une variable interne
+void AdcShow(void);     // Affichage de la luminosité
 
 #endif
 

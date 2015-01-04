@@ -39,17 +39,22 @@ void AdcInit(void){
 
 
 // =======================================================================
-//   Affichage de la luminosité
+//   Conversion ADC (Luminosité)
 // =======================================================================
-void AdcShow(void){
-    writeOnLCDS(FLUSH,0x00, "Luminosity: ");
-
+void AdcConv(void){
     ADCON0bits.GO = 1;
     while(ADCON0bits.GO == 1);
 
     res = ((float)((ADRESH*256) + ADRESL)/1024)*5;
     ftoa(res,&resConv[0],2,'f');
-    
+}
+
+
+
+// =======================================================================
+//   Affichage de la luminosité
+// =======================================================================
+void AdcShow(void){
+    writeOnLCDS(FLUSH,0x00, "Luminosity: ");    
     putsXLCD(resConv);
-    Delay10KTCYx(200);
 }
