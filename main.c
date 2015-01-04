@@ -8,11 +8,13 @@
 
 #include "main.h"
 #include "TIOS.h"
+#include "fcts/OS/hardware.h"
 
 #include "fcts/i2c/i2c.h"
 #include "fcts/LCD/xlcd.h"
-#include "fcts/OS/hardware.h"
 #include "fcts/LCD/writeOnLCD.h"
+
+#include "fcts/GSM/My_GSM.h"
 #include "fcts/USART/My_USART.h"
 #include "fcts/Temperature/ftoa.h"
 #include "fcts/Temperature/1wire.h"
@@ -117,7 +119,8 @@ static void DisplayIPValue(IP_ADDR);    // Affichage adresse IP initialisée
 void main(void){
 
     InitHardware();                         // Initialisation des valeurs systèmes
-    USART1_TX_RX_9600();
+    USART1_TX_RX_9600();                    // Initialisation des registres USART1
+    USART2_TX_RX_9600();                    // Initialisation des registres USART2
     TIOSInitialiser();                      // Initialisation de l'OS (appel des Callbacks)
 
 
@@ -264,10 +267,10 @@ void TemperatureProbe(void){
         TempProbeValues[1] = TempProbeValues[0];
 
     if (TempProbeValues[0] > TEMPERATURE_MAX){
-        //ACTION MODULE GSM
+        GsmCallExecution();
     }
     if (TempProbeValues[0] < TEMPERATURE_MIN){
-        //ACTION MODULE GSM
+        GsmCallExecution();
     }
     
     INTCONbits.GIE = 0;

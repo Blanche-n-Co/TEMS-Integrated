@@ -15,8 +15,9 @@ build/default/production/Main.o:  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/TCP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIP\ Stack/ICMP.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/main.h  \
-	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/pconfig.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/OS/hardware.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/pconfig.h  \
+	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/fcts/GSM/My_GSM.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/TCPIPConfig.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/Compiler.h  \
 	C:/Users/Manager/MPLABXProjects/TEMS-Integrated/HardwareProfile.h  \

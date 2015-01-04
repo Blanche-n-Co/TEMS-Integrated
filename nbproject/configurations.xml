@@ -32,6 +32,9 @@
       <logicalFolder name="f4" displayName="Generic" projectFiles="true">
         <itemPath>main.h</itemPath>
       </logicalFolder>
+      <logicalFolder name="f8" displayName="GSM" projectFiles="true">
+        <itemPath>fcts/GSM/My_GSM.h</itemPath>
+      </logicalFolder>
       <logicalFolder name="f6" displayName="I2C" projectFiles="true">
         <itemPath>fcts/i2c/i2c.h</itemPath>
       </logicalFolder>
@@ -61,6 +64,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="f1" displayName="Functions" projectFiles="true">
+        <logicalFolder name="f7" displayName="ADC" projectFiles="true">
+        </logicalFolder>
         <logicalFolder name="f1" displayName="Ethernet" projectFiles="true">
           <itemPath>ARP.c</itemPath>
           <itemPath>Announce.c</itemPath>
@@ -76,6 +81,9 @@
           <itemPath>Tick.c</itemPath>
           <itemPath>UDP.c</itemPath>
           <itemPath>UDPPerformanceTest.c</itemPath>
+        </logicalFolder>
+        <logicalFolder name="f8" displayName="GSM" projectFiles="true">
+          <itemPath>fcts/GSM/My_GSM.c</itemPath>
         </logicalFolder>
         <logicalFolder name="f5" displayName="I2C" projectFiles="true">
           <itemPath>fcts/i2c/i2c2ack.c</itemPath>
@@ -140,6 +148,7 @@
     <Elem>fcts/Temperature</Elem>
     <Elem>fcts/i2c</Elem>
     <Elem>fcts/USART</Elem>
+    <Elem>fcts/GSM</Elem>
   </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
