@@ -1,24 +1,59 @@
 #include <delays.h>
 #include "../USART/My_USART.h"	//N�cessaire pour USART2
 
-void GsmCallExecution(void)
-{	
-    //#############################################################################################//
-    //Cette fonction a pour but d'exécuter les commandes AT nécessaires afin de réaliser un appel  //
-    //#############################################################################################//
-	
+void GsmTextExecution(void){
     //VARIABLES LOCALES
-    char BaudRate[]="AT";
-    char EchoOn[]="ATE1";
-    char textMode[]="AT+CMGF=1";
-    char full[]="AT+CFUN=1";
-    char modeGSM[]="AT+CSCS=\"GSM\"";
-    char tel[]="ATD0483061579";
+    char numSMS[]="AT+CMGS=\"+32483061579\"";
+    char SMS[]="Test";
+
+    USART2_TX(numSMS[0]);
+    USART2_TX(numSMS[1]);
+    USART2_TX(numSMS[3]);
+    USART2_TX(numSMS[4]);
+    USART2_TX(numSMS[5]);
+    USART2_TX(numSMS[6]);
+    USART2_TX(numSMS[7]);
+    USART2_TX(numSMS[8]);
+    USART2_TX(numSMS[9]);
+    USART2_TX(numSMS[10]);
+    USART2_TX(numSMS[11]);
+    USART2_TX(numSMS[12]);
+    USART2_TX(numSMS[13]);
+    USART2_TX(numSMS[14]);
+    USART2_TX(numSMS[15]);
+    USART2_TX(numSMS[16]);
+    USART2_TX(numSMS[17]);
+    USART2_TX(numSMS[18]);
+    USART2_TX(numSMS[19]);
+    USART2_TX(numSMS[20]);
+    USART2_TX(numSMS[21]);
+    USART2_TX(numSMS[22]);
+    USART2_TX(numSMS[23]);
+    USART2_TX(numSMS[24]);
+    USART2_TX(0x0D);
+    Delay10KTCYx(250);
+
+    USART2_TX(SMS[0]);
+    USART2_TX(SMS[1]);
+    USART2_TX(SMS[2]);
+    USART2_TX(SMS[3]);
+    USART2_TX(0x26);
+    Delay10KTCYx(250);
+}
+
+void GsmCallExecution(void){	
+    //VARIABLES LOCALES
+    char BaudRate[] = "AT";
+    char EchoOn[]   = "ATE1";
+    char textMode[] = "AT+CMGF=1";
+    char full[]     = "AT+CFUN=1";
+    char modeGSM[]  = "AT+CSCS=\"GSM\"";
+    char tel[]      = "ATD0483061579";
 	 
     //BaudRate
     USART2_TX(BaudRate[0]);
     USART2_TX(BaudRate[1]);
-    USART2_TX(0x0D);			//Envoi de <CR> pour l'exécution de la commande AT
+    USART2_TX(0x0D);		//Envoi de <CR> pour l'exécution de la commande AT
     Delay10KTCYx(250); 		//500ms	
 	
     //EchoOn
@@ -26,7 +61,7 @@ void GsmCallExecution(void)
     USART2_TX(EchoOn[1]);
     USART2_TX(EchoOn[2]);
     USART2_TX(EchoOn[3]);
-    USART2_TX(0x0D);			//Envoi de <CR> pour l'exécution de la commande AT
+    USART2_TX(0x0D);		//Envoi de <CR> pour l'exécution de la commande AT
     Delay10KTCYx(250); 		//500ms
 
     //TextMode
@@ -39,7 +74,7 @@ void GsmCallExecution(void)
     USART2_TX(textMode[6]);
     USART2_TX(textMode[7]);
     USART2_TX(textMode[8]);
-    USART2_TX(0x0D);			//Envoi de <CR> pour l'exécution de la commande AT
+    USART2_TX(0x0D);		//Envoi de <CR> pour l'exécution de la commande AT
     Delay10KTCYx(250); 		//500ms
 
     //Full Functionality
@@ -52,7 +87,7 @@ void GsmCallExecution(void)
     USART2_TX(full[6]);
     USART2_TX(full[7]);
     USART2_TX(full[8]);
-    USART2_TX(0x0D);			//Envoi de <CR> pour l'exécution de la commande AT
+    USART2_TX(0x0D);		//Envoi de <CR> pour l'exécution de la commande AT
     Delay10KTCYx(250); 		//500ms
 
     //Mode GSM
@@ -71,7 +106,7 @@ void GsmCallExecution(void)
     USART2_TX(modeGSM[12]);
     USART2_TX(modeGSM[13]);
     USART2_TX(modeGSM[14]);
-    USART2_TX(0x0D);			//Envoi de <CR> pour l'exécution de la commande AT
+    USART2_TX(0x0D);		//Envoi de <CR> pour l'exécution de la commande AT
     Delay10KTCYx(250); 		//500ms
 
     //Appel
@@ -88,6 +123,6 @@ void GsmCallExecution(void)
     USART2_TX(tel[10]);
     USART2_TX(tel[11]);
     USART2_TX(tel[12]);
-    USART2_TX(0x0D);			//Envoi de <CR> pour l'exécution de la commande AT
+    USART2_TX(0x0D);		//Envoi de <CR> pour l'exécution de la commande AT
     Delay10KTCYx(250); 		//500ms
 }

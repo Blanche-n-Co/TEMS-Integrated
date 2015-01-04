@@ -1,14 +1,17 @@
 #ifndef __My_GSM_H
 #define __My_GSM_H
 
-//###############################################//
-//           Prototypes de fonctions             //
-//###############################################//
+/******************************************************************
+**                    FUNCTION PROTOTYPES 			 **
+******************************************************************/
 
-//Cette fonction a pour but de configurer les registres nÃ©cessaires Ã  l'USART2
+//Configurer les registres nécessaires à l'USART2
 void GsmConfigurationRegistre(void);
 
-//Cette fonction a pour but d'exÃ©cuter les commandes AT nÃ©cessaires afin de rÃ©aliser un appel
+//Exécuter les commandes AT nécessaires afin d'envoyer un message
+void GsmTextExecution(void);
+
+//Exécuter les commandes AT nécessaires afin de réaliser un appel
 void GsmCallExecution(void);
 
 #endif
