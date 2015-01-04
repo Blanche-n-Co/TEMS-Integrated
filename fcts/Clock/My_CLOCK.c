@@ -46,7 +46,7 @@ void ClockInit(void){
     //Ecriture de l'heure
     IdleI2C2();
     StartI2C2();                //Condition de START équivalent à SSP2CON2bits.SEN = 1;
-    while(SSP2CON2bits.SEN);    //Attends qu'il soit près
+    while(SSP2CON2bits.SEN);    //Attends qu'il soit prêt
     WriteI2C2(0b11010000);      //Adresse du périphérique et mode d'écriture (0)
     WriteI2C2(0b00000000);      //Envoie l'adresse de start dans laquelle on commence à écrire
 
@@ -70,13 +70,13 @@ void ClockRead(void){
     Delay10KTCYx(200);
 
     IdleI2C2();
-    StartI2C2();
-    while(SSP2CON2bits.SEN);
+    StartI2C2();                                //Condition de start
+    while(SSP2CON2bits.SEN);                    //On attends qu'il soit prêt
     WriteI2C2(0b11010000);                      //On doit utiliser le rewrite
-    WriteI2C2(0b00000000);
+    WriteI2C2(0b00000000);                      //Lire à partir de... (adresse)
 
-    RestartI2C2();
-    while(SSP2CON2bits.RSEN);
+    RestartI2C2();                              //Condition de restart
+    while(SSP2CON2bits.RSEN);                   //On attends qu'il soit prêt
     WriteI2C2(0b11010001);
 
     getsI2C2(&ClockReadBuffer[0],nbBytes);
