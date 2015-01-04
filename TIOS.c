@@ -164,7 +164,6 @@ void TIOSRetirerCB_USART1_RX(void){
 void TIOSStart()
 {
     unsigned char idx;
-//    unsigned char cls;
 
     /*************************************
     *-> Configuration des interruptions
@@ -178,22 +177,8 @@ void TIOSStart()
     IPR1bits.TMR1IP     = 1;		// Activation interruption en Haute Priorité
 
     //INT0 (Buttons)
-    INTCONbits.INT0IE = 1;              // Interruption INT0 activée
+    INTCONbits.INT0IE   = 1;            // Interruption INT0 activée
     INTCON2bits.INTEDG0 = 0;            // Interruption sur flanc descendant activée
-
-
-    
-    /*************************************
-    *-> Configuration de l'ADC
-    **************************************/
-    ANSELDbits.ANSD4    = 1;
-    TRISDbits.TRISD4    = 1;
-    ADCON0bits.ADON     = 1;
-    ADCON0bits.CHS      = 0b11000;
-    ADCON1bits.PVCFG    = 0b00;
-    ADCON1bits.NVCFG    = 0b00;
-    ADCON2bits.ADCS     = 0b101;
-    ADCON2bits.ADFM     = 1;
 
 
 
@@ -219,9 +204,9 @@ void TIOSStart()
             Button = NONE;
         }
 
-        if (USARTReception)
+        if (USARTReception)                                 // Flag en cas de réception série
         {
-            USARTReception = 0;
+            USARTReception = 0;                             // Clear du flag
 
             if (MaCBUSART1)
                 MaCBUSART1(bufRS232);                       //Rappel de la fonction enregistrée!
@@ -257,7 +242,7 @@ void MyInterruptHight(void)
         for (i = 0; i < MAXCALLBACKCHRONO; i++) // Ajourne tous les ticks
             TickCB[i]++;
 
-        TMR1H = 0xF0;
+        TMR1H = 0xF0;                           // Reconfiguration des valeurs par défaut
         TMR1L = 0x60;
 
 	PIR1bits.TMR1IF = 0;
@@ -265,7 +250,7 @@ void MyInterruptHight(void)
     
     //Flag interruption sur boutons
     if(INTCONbits.INT0IF){
-        INT_BP_ANS = ANALOGIC;                                                     // GESTION DES REBONDS
+        INT_BP_ANS = ANALOGIC;                  // Gestion des rebonds
         IDCB_ENABLE_INTERRUPT_BP = TIOSEnregistrerCB_TIMER(ENABLE_INTERRUPT_BP, 1000);  // INT_BP désactivées pour 500 ms
 
         if (INT_BP == 0)

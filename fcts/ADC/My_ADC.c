@@ -42,11 +42,11 @@ void AdcInit(void){
 //   Conversion ADC (Luminosité)
 // =======================================================================
 void AdcConv(void){
-    ADCON0bits.GO = 1;
-    while(ADCON0bits.GO == 1);
+    ADCON0bits.GO = 1;                      // Lance une conversion
+    while(ADCON0bits.GO == 1);              // Attends que la conversion soit finie
 
     res = ((float)((ADRESH*256) + ADRESL)/1024)*5;
-    ftoa(res,&resConv[0],2,'f');
+    ftoa(res,&resConv[0],2,'f');            // Convertit la valeur en une chaine de caractères
 }
 
 

@@ -50,21 +50,21 @@
 // =======================================================================
 //   Variables globales
 // =======================================================================
-char StateUp                = ZERO;
-unsigned char IDCB_LED      = 0;            // ID de la callback "LedModeBlink"
-unsigned char IDCB_EthSoTX  = 0;            // ID de la callback "EthernetSocketTX"
+char StateUp                = ZERO;     // Variable pour multi action sur bouton
+unsigned char IDCB_LED      = 0;        // ID de la callback "LedModeBlink"
+unsigned char IDCB_EthSoTX  = 0;        // ID de la callback "EthernetSocketTX"
 
 
 
 /* ETHERNET */
-#define EthernetPort    8080
-#define MaxLenghtRX     30
+#define EthernetPort    8080            // Port utilisé par le module Ethernet
+#define MaxLenghtRX     30              // Taille maximum du buffer
 APP_CONFIG              AppConfig;      // Structure déclarée dans StackTsk.h
                                         //(utiliser ds la fonction init_appconfig)
-WORD ok                 = 0;
-WORD nbrRecu            = 0;
-unsigned char i         = 0;
-BYTE DonneRecue[MaxLenghtRX];
+WORD ok                 = 0;            // Valeur supérieure à zéro pour l'envoie
+WORD nbrRecu            = 0;            // Valeur supérieure à zéro pour la réception
+unsigned char i         = 0;            // Variable temporaire de boucle
+BYTE DonneRecue[MaxLenghtRX];           // Données reçues par Ethernet
 static TCP_SOCKET sendSocket = INVALID_SOCKET;
 
 
@@ -100,7 +100,7 @@ void main(void){
     *-> Configuration LCD
     **************************************/
     OpenXLCD(FOUR_BIT & LINES_5X7);         // Configuration fonctionnement LCD
-    while(BusyXLCD());                      // Configuration du splash screen
+    while(BusyXLCD());                      // Attente pour le module LCD
     putrsXLCD("     T E M S    ");
     while(BusyXLCD());
     SetDDRamAddr(0x40);
@@ -136,11 +136,11 @@ void main(void){
     TIOSEnregistrerCB_Button(ButtonsManagement);
     TIOSEnregistrerCB_USART1_RX(USART1_RX);
 
-    TIOSEnregistrerCB_TIMER(AdcConv,         1000);
-    TIOSEnregistrerCB_TIMER(LedModeBlink,    50);
-    TIOSEnregistrerCB_TIMER(TemperatureProbe,1000);
-    TIOSEnregistrerCB_TIMER(EthernetSocketRX,50);
-    IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000);
+    TIOSEnregistrerCB_TIMER(AdcConv,         1000);     // Conversion température toutes les 1000 ms
+    TIOSEnregistrerCB_TIMER(LedModeBlink,    50);       // Allumage LED Blink toutes les 50 ms
+    TIOSEnregistrerCB_TIMER(TemperatureProbe,1000);     // Echantillonnage de la température toutes les 1000 ms
+    TIOSEnregistrerCB_TIMER(EthernetSocketRX,50);       // Vérification de la réception ETH toutes les 50 ms
+    IDCB_EthSoTX = TIOSEnregistrerCB_TIMER(EthernetSocketTX, 5000); // Envoie ETH toutes les 5 secondes
 
 
 
@@ -207,7 +207,6 @@ void ButtonsManagement(volatile unsigned char *ptr_Button){
 //   Fonction de gestion de réception RX USART1
 // =======================================================================
 void USART1_RX(char *Trame){
-    LED = 1;
     if ((Trame[0] = '#')){
         switch (Trame[1]){
             case 'A' :
@@ -216,6 +215,10 @@ void USART1_RX(char *Trame){
 
             case 'B' :
                 RELAIS = 0;
+                break;
+
+            case 'S' :
+                GsmCallExecution();
                 break;
 
             default:
@@ -243,8 +246,8 @@ void EthernetSocketInit(void){
         putrsXLCD("ETH: Socket Fail");
     else{
         putrsXLCD("ETH: Connected  ");
-        Delay10KTCYx(200); Delay10KTCYx(200);
-        DisplayIPValue(AppConfig.MyIPAddr);
+        Delay10KTCYx(200); Delay10KTCYx(200);   // Attends 1 seconde
+        DisplayIPValue(AppConfig.MyIPAddr);     // Affiche l'adresse IP configurée
     }    
 }
 
@@ -256,6 +259,7 @@ void EthernetSocketTX(void)
     StackTask();
     StackApplications();
 
+    /* ENVOIE DU HOSTNAME */
     if(TCPIsConnected(sendSocket)){
         ok = TCPIsPutReady(sendSocket);
         if(ok > 0){
@@ -264,6 +268,7 @@ void EthernetSocketTX(void)
         }
     }
 
+    /* ENVOIE DES TEMPERATURES CURRENT, MAX ET MIN*/
     for(j=0 ; j<3 ; j++){
         StackTask();
         StackApplications();
@@ -281,6 +286,7 @@ void EthernetSocketTX(void)
     StackTask();
     StackApplications();
 
+    /* ENVOI DE LA LUMINOSITE */
     if(TCPIsConnected(sendSocket)){
         ok = TCPIsPutReady(sendSocket);
         if(ok > 0){
@@ -305,7 +311,7 @@ void EthernetSocketRX(void)
 
             ok = TCPGetArray(sendSocket,&DonneRecue[0], nbrRecu);
 
-            if(DonneRecue[0] == 35)           // Commandes: 35 = #
+            if(DonneRecue[0] == 35)             // Commandes: 35 = #
             {
                 //DoorOpened=DO / DoorClosed= DC
                 if(strcmppgm2ram(DonneRecue,"#DO") == 0){
@@ -317,8 +323,7 @@ void EthernetSocketRX(void)
     }
 }
 
-static void DisplayIPValue(IP_ADDR IPVal)
-{
+static void DisplayIPValue(IP_ADDR IPVal){
     //	printf("%u.%u.%u.%u", IPVal.v[0], IPVal.v[1], IPVal.v[2], IPVal.v[3]);
     BYTE IPDigit[4];
     BYTE i;
@@ -334,7 +339,7 @@ static void DisplayIPValue(IP_ADDR IPVal)
         while(BusyXLCD());
         putsXLCD(IPDigit);
 
-        if(i == sizeof(IP_ADDR)-1)
+        if(i == sizeof(IP_ADDR)-1)              // Arrête l'ajout de point pour le dernier octet
             break;
 
         while(BusyXLCD());

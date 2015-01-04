@@ -36,9 +36,9 @@ void TemperatureConvert(void){
 //   Fonction de gestion de température
 // =======================================================================
 void TemperatureProbe(void){
-    INTCONbits.GIE = 0;
-    TempProbeValues[0] = Read_Temperature();
-    INTCONbits.GIE = 1;
+    INTCONbits.GIE = 0;                         // Désactive temporairement les interruptions
+    TempProbeValues[0] = Read_Temperature();    // Alimente la température actuelle
+    INTCONbits.GIE = 1;                         // Reactive les interruptions
 
     if (TempProbeValues[0] < TempProbeValues[2])
         TempProbeValues[2] = TempProbeValues[0];
@@ -53,7 +53,5 @@ void TemperatureProbe(void){
         GsmCallExecution();
     }
 
-    INTCONbits.GIE = 0;
-    Convert_Temperature();
-    INTCONbits.GIE = 1;
+    TemperatureConvert();
 }
